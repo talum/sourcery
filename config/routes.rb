@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
   resources :resources
   resources :groups
+  resources :comments, only: [:create, :destroy]
  
 
   root to: "home#show"
