@@ -3,7 +3,8 @@
 <p>Resources</p>
 <ul>
 <% @group.resources.each do |resource| %>
-  <li><%= resource.title %></li>
+  <li><%= resource.title %>: 
+  <%= link_to "#{resource.link}", resource.link %></li>
 <% end %>
 </ul>
 
