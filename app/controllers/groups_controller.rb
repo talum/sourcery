@@ -20,13 +20,11 @@ class GroupsController < ApplicationController
     else
       render "new"
     end
-    binding.pry
-    #use current_user
-    # if current_user.teacher
-    #   current_user.id = @group.teacher_id
-    # elsif current_user.student
-    #   current_user.id = @group.students.find(params[:id])
-    # end
+    if current_user.teacher
+      @group.teacher_id = current_user.id 
+    else
+      current_user.student.groups.push(@group)
+    end
   end
 
   def edit
