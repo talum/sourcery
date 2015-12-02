@@ -9,3 +9,7 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+GMAIL_ID: 142151133053-qsjtjtdjrhcvcp8ec9o8uo5kh3vva644.apps.googleusercontent.com
+
+GMAIL_SECRET: 5mPw5S-hOXufMXQD2I1v1Pt9
