@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
+    @comment = Comment.new
   end
 
   def create
