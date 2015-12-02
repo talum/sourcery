@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202182649) do
+ActiveRecord::Schema.define(version: 20151202214625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,13 +72,14 @@ ActiveRecord::Schema.define(version: 20151202182649) do
     t.string   "email"
     t.datetime "dob"
     t.string   "gender"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "gmail_name"
+    t.integer  "sign_in_count",    default: 0
   end
 
 end
