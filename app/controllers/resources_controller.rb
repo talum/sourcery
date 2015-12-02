@@ -5,12 +5,16 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = Resource.new(resource_params)
+    if 
+    else
+    end
     if @resource.save
       redirect_to @resource
     else
       @group = Group.find(resource_params[:group_id])
       render 'groups/show'
     end
+    binding.pry
   end
 
   def edit
