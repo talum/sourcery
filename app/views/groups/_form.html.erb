@@ -1,5 +1,6 @@
 <%= form_for @group do |f| %>
   <%= f.label :topic %>
   <%= f.text_field :topic %>
+  <%= f.hidden_field :teacher_id, value: teacher_id %>
   <%= f.submit %>
 <% end %>

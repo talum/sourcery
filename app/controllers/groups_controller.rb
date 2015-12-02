@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
     else
       current_user.student.groups.push(@group)
     end
+    binding.pry
   end
 
   def edit
