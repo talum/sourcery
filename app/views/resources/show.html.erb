@@ -2,3 +2,18 @@
 <p>Link: <%= @resource.link %></p>
 <p>Group ID: <%= @resource.group_id %></p>
 <%= link_to "Edit", edit_resource_path(@resource) %>
+
+<h4>Comments</h4>
+<ul>
+<% @resource.comments.each do |comment| %>
+  <li><%= comment.user.gmail_name %>: <%= comment.content %></li>
+<% end %>
+</ul>
+
+<%= form_for @comment do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :resource_id, value: @resource.id %>
+  <%= f.submit %>
+<% end %>
