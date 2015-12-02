@@ -3,4 +3,6 @@ class Group < ActiveRecord::Base
   has_many :student_groups
   has_many :students, through: :student_groups
   has_many :resources
+  validates :topic, presence: true
+
 end
