@@ -2,7 +2,7 @@
 
 <p>Name: <%= current_user.gmail_name %></p>
 <p>Groups:<br>
-  
+
   <% current_user.groups.each do |group| %>
     <%= group.topic %>
   <% end %>

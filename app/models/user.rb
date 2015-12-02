@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
     self.gmail_name.split(" ").last
   end
 
+  def groups
+    self.teacher ? groups = self.teacher.groups : groups = self.student.groups
+  end
+
 end
