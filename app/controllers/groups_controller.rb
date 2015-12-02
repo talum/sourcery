@@ -2,9 +2,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @resource = Resource.new
   end
 
   def index
+    @groups = Group.all
   end
 
   def new
@@ -25,9 +27,15 @@ class GroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id])
+    @group.update(group_params)    
+    redirect_to @group
   end
 
   def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to groups_path
   end
 
   private

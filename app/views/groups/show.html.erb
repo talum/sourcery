@@ -2,4 +2,15 @@
 
 <p>Teacher Id: <%= @group.teacher_id %></p>
 
+<p>Resources</p>
+<ul>
+<% @group.resources.each do |resource| %>
+  <li><%= resource.title %></li>
+<% end %>
+</ul>
 
+<%= button_to "delete", @group, method: :delete %>
+
+<h3>Add New Resource</h3>
+
+<%= render 'resources/form', group_id: @group.id %>
