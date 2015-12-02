@@ -5,9 +5,6 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = Resource.new(resource_params)
-    if 
-    else
-    end
     if @resource.save
       redirect_to @resource
     else
