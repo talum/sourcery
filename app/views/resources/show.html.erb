@@ -6,7 +6,7 @@
 <h4>Comments</h4>
 <ul>
 <% @resource.comments.each do |comment| %>
-  <li><%= comment.user.gmail_name %>: <%= comment.content %></li>
+  <li><%= comment.user.gmail_name %>: <%= comment.content %> | <%= link_to("X", comment_path(comment), method: :delete) %></li>
 <% end %>
 </ul>
 
