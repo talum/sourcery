@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @resource = Resource.new
   end
 
   def index
