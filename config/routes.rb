@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
-  resources :resources, except: [:index] 
+  resources :resources
   resources :groups
  
 

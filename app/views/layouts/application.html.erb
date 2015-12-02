@@ -9,12 +9,19 @@
 
 <body>
   <div>
-    <% if current_user %>
-      Signed in as <strong><%= current_user.gmail_name %></strong>!
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% else %>
-      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-    <% end %>
+    <nav>
+      <% if current_user %>
+        Signed in as <strong><%= current_user.gmail_name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <%= link_to "Home", root_url%>
+        <%= link_to "Groups", groups_path%>
+        <%= link_to "My Resources", resources_path%>
+
+      <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+
+    </nav>
   </div>
   <div>
   <%= yield %>

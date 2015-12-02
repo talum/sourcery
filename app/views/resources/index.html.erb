@@ -1,0 +1,7 @@
+<h3>My Resources</h3>
+<ul>
+<% @resources.each do |resource| %>
+  <li><%= link_to resource.title, resource_path(resource) %> | <%= button_to "delete", resource, method: :delete %></li>
+<% end %>
+</ul>
+

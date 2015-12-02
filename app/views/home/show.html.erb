@@ -1,2 +1,7 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<h1>Welcome to Sourcery</h1>
+<% if current_user %>
+  <p> Maybe we can replace this with/ render the user show page? </p>
+
+<% else %>
+  <p> Please login to view, create and join groups and to start sharing resources!</p>
+<% end %>
