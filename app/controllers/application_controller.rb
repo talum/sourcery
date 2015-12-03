@@ -4,13 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
-
-  # def current_user
-  #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  #   unless @current_user
-  #     User.find(params[:id]) if params[:id]
-  #   end
-  # end
+  
+  def login_required
+   if !logged_in?
+     redirect_to root_path, :notice => "You need to log in"
+   end
+  end
 
   def current_user
     if @current_user
@@ -20,5 +19,9 @@ class ApplicationController < ActionController::Base
     elsif params[:id]
       User.find(params[:id])
     end
+  end
+
+  def logged_in?
+    !!(@current_user)
   end
 end

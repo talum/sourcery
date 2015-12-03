@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  # before_action :login_required
+  
   def index
     @resources_by_group = current_user.resources_by_group
   end
