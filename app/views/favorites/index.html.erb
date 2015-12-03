@@ -1,0 +1,6 @@
+<h3>My Favorites</h3>
+<ul>
+  <% @favorites.each do |favorite| %>
+     <li> Title: <%= link_to favorite.resource.title, favorite.resource %></li>
+  <% end %>
+</ul>

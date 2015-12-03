@@ -1,7 +1,8 @@
-<h3>Title: <%= link_to @resource.title, @resource.group %></h3>
+<h3>Title: <%=@resource.title%></h3>
+<%= button_to "Favorite", favorite_path(:resource => @resource) %><br>
 <%= link_to "Click to Edit", edit_resource_path(@resource) %>
 <p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
-<p>Group ID: <%= @resource.group_id %></p>
+<p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
 
 <div id="externalSiteContent">
   <iframe src="<%= @resource.link %>" width="1000" height="700" style="border:medium double rgb(0, 0, 0)"></iframe>

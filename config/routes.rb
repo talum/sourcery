@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   post 'choice', to: 'sessions#choice', as: 'choice'
   post 'favorite', to: 'resources#favorite', as: 'favorite'
+  post 'unfavorite', to: 'resources#unfavorite', as: 'unfavorite'
 
 
   resources :sessions, only: [:create, :destroy]
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :resources
   resources :groups
   resources :comments, only: [:create, :destroy]
+  resources :favorites, only: [:index]
  
   root to: "home#show"
 

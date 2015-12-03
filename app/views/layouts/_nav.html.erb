@@ -6,6 +6,7 @@
       <%= link_to "Groups", groups_path%>
       <%= link_to "My Resources", resources_path%>
       <%= link_to "My Groups", user_groups_path(current_user) %>
+      <%= link_to "My Favorites", favorites_path%>
     <% else %>
       <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
     <% end %>

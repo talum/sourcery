@@ -44,6 +44,13 @@ class ResourcesController < ApplicationController
     redirect_to :back
   end
 
+  def unfavorite
+    # @resource = Resource.find(params[:resource])
+    @favorite = Favorite.find_by(user_id: current_user.id, resource_id: params[:resource])
+    @favorite.destroy
+    redirect_to :back
+  end
+
 private
   def resource_params
     params.require(:resource).permit(:title, :link, :group_id)
