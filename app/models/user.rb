@@ -29,4 +29,12 @@ class User < ActiveRecord::Base
     self.teacher ? groups = self.teacher.groups : groups = self.student.groups
   end
 
+  def resources_by_group
+    binding.pry
+    groups.each_with_object({}) do |group, hash|
+      binding.pry
+      hash[group] = group.resources.where(user.gmail_name => self.gmail_name)
+    end
+  end
+
 end

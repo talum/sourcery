@@ -11,7 +11,7 @@
   <div>
     <nav>
       <% if current_user %>
-        Signed in as <strong><%= link_to current_user.gmail_name, user_path %></strong>!
+        Signed in as <strong><%= link_to current_user.gmail_name, user_path(current_user) %></strong>!
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
         <%= link_to "Home", root_url%>
         <%= link_to "Groups", groups_path%>

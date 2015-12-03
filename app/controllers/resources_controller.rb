@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   def index
-    @resources = current_user.resources
+    @resources_by_group = current_user.resources_by_group
   end
 
   def show
