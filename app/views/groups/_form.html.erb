@@ -1,5 +1,7 @@
 <%= form_for @group do |f| %>
   <%= f.label :topic %>
   <%= f.text_field :topic %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
   <%= f.submit %>
 <% end %>
