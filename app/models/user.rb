@@ -45,4 +45,10 @@ class User < ActiveRecord::Base
     self.gmail_name.split(" ").last
   end
 
+  def resources_by_group
+    groups.each_with_object({}) do |group, hash|
+      hash[group.topic] = group.resources.where(user_id: self.id)
+    end
+  end
+
 end

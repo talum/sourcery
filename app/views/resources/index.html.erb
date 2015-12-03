@@ -1,7 +1,9 @@
 <h3>My Resources</h3>
 <ul>
-<% @resources.each do |resource| %>
-  <li><%= link_to resource.title, resource_path(resource) %> | <%= button_to "delete", resource, method: :delete %></li>
+<% @resources_by_group.each do |group_resources| %>
+  <p>Group: <%= group_resources[0] %> </p>
+  <% group_resources[1].each do |resource| %>
+    <p> resource title: <%= resource.title %>
+  <% end %> 
 <% end %>
 </ul>
-
