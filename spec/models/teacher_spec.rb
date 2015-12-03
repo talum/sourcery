@@ -11,5 +11,18 @@
 require 'rails_helper'
 
 RSpec.describe Teacher, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Associations' do
+    it 'belongs to a user' do 
+      expect(@teacher.user).to eq(@maddy)
+    end
+
+    it 'has many groups through user' do 
+      expect(@teacher.groups).to eq(@maddy.groups)
+      expect(@teacher.groups).to include(@bio)
+    end
+
+  end
+
 end
+
