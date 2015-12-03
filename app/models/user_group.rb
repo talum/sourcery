@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class StudentGroup < ActiveRecord::Base
-  belongs_to :student
+class UserGroup < ActiveRecord::Base
+  belongs_to :user
   belongs_to :group
 end

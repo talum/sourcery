@@ -10,9 +10,9 @@
 #
 
 class Group < ActiveRecord::Base
-  belongs_to :teacher
-  has_many :student_groups
-  has_many :students, through: :student_groups
+  has_many :user_groups
+  has_many :students, through: :user_groups
+  has_many :teachers, through: :user_groups
   has_many :resources
   validates :topic, presence: true
 
