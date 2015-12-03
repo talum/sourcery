@@ -55,6 +55,10 @@ RSpec.configure do |config|
     @bio = Group.create(topic: "Biology", description: "Fun bio")
     @darwin = Resource.create(title: "Origin of Species", link: "www.google.com")
     @comment = Comment.create(content: "Darwin is awesome!")
+    @favorite = Favorite.create
+
+    @favorite.resource = @darwin
+    @maddy.favorites.push(@favorite)
 
     @maddy.comments.push(@comment)
     @darwin.comments.push(@comment)

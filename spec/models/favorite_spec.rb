@@ -12,5 +12,16 @@
 require 'rails_helper'
 
 RSpec.describe Favorite, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Associations' do
+    it 'belongs to a resource' do 
+      expect(@favorite.resource).to eq(@darwin)
+    end
+
+    it 'belongs to a user' do 
+      expect(@favorite.user).to eq(@maddy)
+    end
+
+  end
+
 end
