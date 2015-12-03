@@ -36,6 +36,12 @@ class ResourcesController < ApplicationController
     redirect_to @group
   end
 
+  def favorite
+    # @resource = Resource.find(params[:resource])
+    Favorite.find_or_create_by(user_id: current_user.id, resource_id: params[:resource])
+    redirect_to :back
+  end
+
 private
   def resource_params
     params.require(:resource).permit(:title, :link, :group_id)

@@ -3,8 +3,14 @@
 <p>Resources</p>
 <ul>
 <% @group.resources.each do |resource| %>
-  <li><%= resource.title %>: 
+  <li><%= resource.title %>:
   <%= link_to "#{resource.link}", resource.link %></li>
+  <ul> 
+    <% resource.favorites.each do |favorite| %>
+      <%= favorite.user.gmail_name %> likes this
+    <% end %>
+  </ui>
+  <%= button_to "Favorite", favorite_path(:resource => resource) %></li>
 <% end %>
 </ul>
 
