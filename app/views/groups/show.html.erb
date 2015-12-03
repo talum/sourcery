@@ -1,21 +1,21 @@
-<p>Group Topic: <%= @group.topic %></p>
+<h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
 
-<p>Resources</p>
+<h4>Resources</h4>
 <ul>
-<% @group.resources.each do |resource| %>
-  <li><%= resource.title %>:
-  <%= link_to "#{resource.link}", resource.link %></li>
-  <ul> 
-    <% resource.favorites.each do |favorite| %>
-      <%= favorite.user.gmail_name %> likes this
-    <% end %>
-  </ui>
-  <%= button_to "Favorite", favorite_path(:resource => resource) %></li>
-<% end %>
+  <% @group.resources.each do |resource| %>
+    <li><%= link_to resource.title, resource %>:
+    <%= link_to "#{resource.link}", resource.link %></li>
+    <ul> 
+      <% resource.favorites.each do |favorite| %>
+        <%= favorite.user.gmail_name %> likes this
+      <% end %>
+    </ul>
+    <%= button_to "Favorite", favorite_path(:resource => resource) %></li>
+  <% end %>
 </ul>
 
-<p>Group Members</p>
+<h4>Group Members</h4>
 <ul>
   <% @group.users.each do |user| %>
     <li><%= user.gmail_name %></li>

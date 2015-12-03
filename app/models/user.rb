@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
 
   def resources_by_group
     groups.each_with_object({}) do |group, hash|
-      hash[group.topic] = group.resources.where(user_id: self.id)
+      hash[group] = group.resources.where(user_id: self.id)
     end
   end
 

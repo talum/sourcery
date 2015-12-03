@@ -1,9 +1,9 @@
 <h3>My Resources</h3>
 <ul>
 <% @resources_by_group.each do |group_resources| %>
-  <p>Group: <%= group_resources[0] %> </p>
+  <h4>Group: <%= link_to group_resources[0].topic, group_resources[0] %> </h4>
   <% group_resources[1].each do |resource| %>
-    <p> resource title: <%= resource.title %>
+    <p> resource title: <%= link_to resource.title, resource %> </p>
   <% end %> 
 <% end %>
 </ul>
