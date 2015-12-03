@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if !@group.users.include? current_user
       @group.users << current_user
     end   
-    redirect_to groups_path
+    redirect_to @group
   end
 
   def leave_group
