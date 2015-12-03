@@ -21,5 +21,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#firstname' do
+    let(:user) {  FactoryGirl.build( :user, gmail_name: gmail_name)}
+    let(:gmail_name){'Jess Parker'}
+
+    context 'when user has two-word string gmail_name' do
+      it 'returns the correct first name' do
+        expect(user.firstname).to eq 'Jess'
+      end
+    end
+  end
 end
