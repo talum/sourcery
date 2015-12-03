@@ -8,6 +8,13 @@
 <% end %>
 </ul>
 
+<p>Group Members</p>
+<ul>
+  <% @group.students.each do |student| %>
+    <li><%= student.user.gmail_name %></li>
+  <% end %>
+</ul>
+
 <%= button_to "delete", @group, method: :delete %>
 
 <h3>Add New Resource</h3>

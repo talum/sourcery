@@ -49,4 +49,10 @@ class User < ActiveRecord::Base
     self.teacher ? groups = self.teacher.groups : groups = self.student.groups
   end
 
+  def resources_by_group
+    groups.each_with_object({}) do |group, hash|
+      hash[group.topic] = group.resources.where(user_id: self.id)
+    end
+  end
+
 end
