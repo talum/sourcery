@@ -15,11 +15,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    if current_user.teacher
-      current_user.teacher.groups.push(@group)
-    else
-      current_user.student.groups.push(@group)
-    end
+    current_user.groups << @group
     if @group.save
       redirect_to @group
     else
