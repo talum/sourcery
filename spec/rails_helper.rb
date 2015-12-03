@@ -49,4 +49,28 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.before(:each) do
+    @maddy = User.create(gmail_name: "Maddy")
+    @bio = Group.create(topic: "Biology", description: "Fun bio")
+    @darwin = Resource.create(title: "Origin of Species", link: "www.google.com")
+    @comment = Comment.create(content: "Darwin is awesome!")
+
+    @maddy.comments.push(@comment)
+    @darwin.comments.push(@comment)
+    @bio.resources.push(@darwin)
+    @maddy.groups.push(@bio)
+
+  end
+
+
+
+
+
+
+
+
+
+
+
 end

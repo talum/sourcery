@@ -15,6 +15,7 @@ FactoryGirl.define do
   factory :resource do
     title "hellooo sorcery"
     link "http://harrypotter.com"
+    association :comment, factory: :comment
         
   end
 

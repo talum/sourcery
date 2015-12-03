@@ -26,4 +26,15 @@ RSpec.describe Comment, type: :model do
     end
   end
 
+  describe 'Associations' do
+    it 'belongs to a resource' do 
+      expect(@comment.resource).to eq(@darwin)
+    end
+
+    it 'belongs to a user' do 
+      expect(@comment.user).to eq(@maddy)
+    end
+
+  end
+
 end
