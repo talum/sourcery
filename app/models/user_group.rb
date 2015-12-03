@@ -1,9 +1,9 @@
 # == Schema Information
 #
-# Table name: student_groups
+# Table name: user_groups
 #
 #  id         :integer          not null, primary key
-#  student_id :integer
+#  user_id    :integer
 #  group_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

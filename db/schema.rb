@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20151203142328) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "teacher_id"
     t.string   "topic"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -48,13 +47,6 @@ ActiveRecord::Schema.define(version: 20151203142328) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "student_groups", force: :cascade do |t|
-    t.integer  "student_id"
-    t.integer  "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "students", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
@@ -63,6 +55,13 @@ ActiveRecord::Schema.define(version: 20151203142328) do
 
   create_table "teachers", force: :cascade do |t|
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
