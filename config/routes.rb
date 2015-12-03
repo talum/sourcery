@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   post 'choice', to: 'sessions#choice', as: 'choice'
+  post 'favorite', to: 'resources#favorite', as: 'favorite'
 
 
   resources :sessions, only: [:create, :destroy]
