@@ -21,14 +21,33 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+
   describe '#firstname' do
     let(:user) {  FactoryGirl.build( :user, gmail_name: gmail_name)}
     let(:gmail_name){'Jess Parker'}
 
-    context 'when user has two-word string gmail_name' do
+    context 'user has a gmail_name' do
       it 'returns the correct first name' do
         expect(user.firstname).to eq 'Jess'
       end
     end
   end
+
+  describe '#lastname' do
+    let(:user) {  FactoryGirl.build( :user, gmail_name: gmail_name)}
+    let(:gmail_name){'Jess Parker'}
+
+    context 'when user has a gmail_name' do
+      it 'returns the correct last name' do
+        expect(user.lastname).to eq 'Parker'
+      end
+    end
+  end
+
+  describe '#resources' do
+    let(:user) {  FactoryGirl.build( :user, gmail_name: gmail_name)}
+    let(:gmail_name){'Jess Parker'}
+  end
+
+
 end
