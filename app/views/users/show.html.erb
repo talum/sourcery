@@ -3,8 +3,9 @@
 <p>Name: <%= current_user.gmail_name %></p>
 <p>Groups:<br>
 
-  <% current_user.groups.each do |group| %>
-    <%= group.topic %>
-  <% end %>
-
+  <ul>
+    <% current_user.groups.each do |group| %>
+      <li><%= group.topic %></li>
+    <% end %>
+  </ul>
 </p>
