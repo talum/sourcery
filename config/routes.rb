@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
+  post 'users/join_group' => 'users#join_group', as: 'join_group'
   get 'users/:id/groups' => 'users#groups', as: 'user_groups'
   resources :users, only: [:show]
   resources :resources

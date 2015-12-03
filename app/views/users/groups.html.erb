@@ -1,6 +1,7 @@
 <h3>My Groups</h3>
 
 <% current_user.groups.each do |group| %>
-  <h4><%= group.title %></h4>
+  <h4><%= group.topic %></h4>
   <p><%= group.description %></p>
+  <p>Leave Group</p>
 <% end %>

@@ -1,7 +1,10 @@
 <h3>All Groups</h3>
+
+<%= link_to "Add New Group", new_group_path %>
+
 <ul>
 <% @groups.each do |group| %>
-  <li><%= link_to group.topic, group_path(group) %> | <%= button_to "delete", group, method: :delete %></li>
+  <li><%= link_to group.topic, group_path(group) %> | <%= button_to "delete", group, method: :delete %> | <%= button_to "Join Group", {controller: "users", action: "join_group", group_id: group.id}, {method: :post} %>Join group if not a member, leave group if a member</li>
 <% end %>
 </ul>
 
