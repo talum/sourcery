@@ -10,7 +10,10 @@
 <h3>Comments</h3>
 <ul>
 <% @resource.comments.each do |comment| %>
-  <li><%= comment.user.gmail_name %>: <%= comment.content %> | <%= link_to("X", comment_path(comment), method: :delete) %></li>
+  <li><%= comment.user.gmail_name %>: <%= comment.content %> | 
+  <% if comment.user == current_user %>
+    <%= render partial: "delete_comment", locals: {comment: comment} %> </li>
+  <% end %>
 <% end %>
 </ul>
 
