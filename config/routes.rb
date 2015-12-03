@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
   post 'users/join_group' => 'users#join_group', as: 'join_group'
   get 'users/:id/groups' => 'users#groups', as: 'user_groups'
+  delete 'users/leave_group' => 'users#leave_group', as: 'leave_group'
   resources :users, only: [:show]
   resources :resources
   resources :groups

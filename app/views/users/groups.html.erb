@@ -2,5 +2,5 @@
 <% @groups.each do |group| %>
   <h4><%= group.topic %></h4>
   <p><%= group.description %></p>
-  <p>Leave Group</p>
+  <%= button_to "Leave Group", {controller: "users", action: "leave_group", group_id: group.id}, {method: :delete} %>
 <% end %>
