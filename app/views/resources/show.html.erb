@@ -1,9 +1,13 @@
 <h3>Title: <%= @resource.title %></h3>
-<p>Link: <%= @resource.link %></p>
+<%= link_to "Click to Edit", edit_resource_path(@resource) %>
+<p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
 <p>Group ID: <%= @resource.group_id %></p>
-<%= link_to "Edit", edit_resource_path(@resource) %>
 
-<h4>Comments</h4>
+<div id="externalSiteContent">
+  <iframe src="<%= @resource.link %>" width="1000" height="700" style="border:medium double rgb(0, 0, 0)"></iframe>
+</div>
+
+<h3>Comments</h3>
 <ul>
 <% @resource.comments.each do |comment| %>
   <li><%= comment.user.gmail_name %>: <%= comment.content %> | <%= link_to("X", comment_path(comment), method: :delete) %></li>
@@ -11,9 +15,13 @@
 </ul>
 
 <%= form_for @comment do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, :rows => "8", :cols => "50" %><br>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :resource_id, value: @resource.id %>
-  <%= f.submit %>
+  <%= f.submit value="Add Comment" %>
 <% end %>
+<br>
+<br>
+<br>
+<br>
+<br>
