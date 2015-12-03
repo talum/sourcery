@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def groups
+    @groups = current_user.groups
     render 'groups'
   end
 

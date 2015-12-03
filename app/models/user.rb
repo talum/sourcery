@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   has_many :resources
   has_many :user_groups
   has_many :groups, through: :user_groups
-
   has_one :student
   has_one :teacher
 
@@ -44,10 +43,6 @@ class User < ActiveRecord::Base
 
   def lastname
     self.gmail_name.split(" ").last
-  end
-
-  def groups
-    self.teacher ? groups = self.teacher.groups : groups = self.student.groups
   end
 
 end
