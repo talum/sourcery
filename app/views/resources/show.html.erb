@@ -1,5 +1,5 @@
 <h3>Title: <%=@resource.title%></h3>
-<%= button_to "Favorite", favorite_path(:resource => @resource) %><br>
+<%= render partial: FavoriteToggle.new(@resource, current_user).already_favorited?, locals: {resource: @resource} %><br>
 <%= link_to "Click to Edit", edit_resource_path(@resource) %>
 <p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
 <p>Group: <%= link_to @resource.group.topic, @resource.group %></p>

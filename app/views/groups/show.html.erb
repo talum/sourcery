@@ -11,7 +11,7 @@
         <li><%= favorite.user.gmail_name %> likes this</li>
       <% end %>
     </ul>
-      <%= button_to "Favorite", favorite_path(:resource => resource) %></li>
+      <%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %>
   <% end %>
 </ul>
 
