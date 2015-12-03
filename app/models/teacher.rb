@@ -11,5 +11,5 @@
 class Teacher < ActiveRecord::Base
   belongs_to :user
   has_many :user_groups
-  has_many :groups, through: :user_groups
+  has_many :groups, through: :user
 end

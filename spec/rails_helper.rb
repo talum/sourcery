@@ -52,10 +52,17 @@ RSpec.configure do |config|
 
   config.before(:each) do
     @maddy = User.create(gmail_name: "Maddy")
+    @tracy = User.create(gmail_name: "Tracy")
     @bio = Group.create(topic: "Biology", description: "Fun bio")
     @darwin = Resource.create(title: "Origin of Species", link: "www.google.com")
     @comment = Comment.create(content: "Darwin is awesome!")
     @favorite = Favorite.create
+
+    @student = Student.create
+    @student.user = @tracy
+
+    @teacher = Teacher.create
+    @teacher.user = @maddy
 
     @favorite.resource = @darwin
     @maddy.favorites.push(@favorite)
@@ -64,6 +71,7 @@ RSpec.configure do |config|
     @darwin.comments.push(@comment)
     @bio.resources.push(@darwin)
     @maddy.groups.push(@bio)
+    @tracy.groups.push(@bio)
 
   end
 
