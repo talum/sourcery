@@ -1,6 +1,6 @@
 <h3>My Groups</h3>
 <% @groups.each do |group| %>
-  <h4><%= group.topic %></h4>
+  <h4><%= link_to group.topic, group_path(group) %></h4>
   <p><%= group.description %></p>
   <%= render partial: 'groups/leave_group_options', locals: {group: group} %>
 <% end %>

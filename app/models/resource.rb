@@ -18,5 +18,18 @@ class Resource < ActiveRecord::Base
   has_many :favorites
   validates :title, presence: true
   validates :link, presence: true
+
+  def likes_message(user)
+    if !user_liked?(user)
+      "<strong>#{self.favorites.count} people</strong> like this resource".html_safe
+    else
+      "<strong>You</strong> and <strong>#{self.favorites.count - 1} other people</strong> like this resource".html_safe
+    end
+  end
+
+  private
+  def user_liked?(user)
+    self.favorites.where(user_id: user.id).any?
+  end
   
 end
