@@ -44,4 +44,44 @@ RSpec.describe User, type: :model do
     end
   end
 
+   describe '#resources_by_group' do
+    let(:user) {  FactoryGirl.build( :user, gmail_name: gmail_name)}
+    let(:gmail_name){'Jess Parker'}
+
+    context 'when user has no groups or resources' do
+      it 'return an empty hash' do
+        expect(user.resources_by_group).to eq({})
+      end
+    end
+
+    let(:user) {  FactoryGirl.build( :user, gmail_name: 
+      gmail_name)}
+    let(:group1){ FactoryGirl.build( :group, topic: 'construction')}
+    let(:resource1){ FactoryGirl.build( :resource, title: 'tools', link: 'www.tooltime.com')}
+
+    context 'when user has one group' do
+      it 'return a hash with one key/value pair' do
+        user.groups << group1
+        group1.resources << resource1
+        group1.save
+        expect(user.resources_by_group).to eq({group1 => group1.resources})
+      end
+    end
+
+    let(:group2){ FactoryGirl.build( :group, topic: 'knitting')}
+    let(:resource2){ FactoryGirl.build( :resource, title: 'yarn work', link: 'www.itsseweasy.com')}
+
+    context 'when user has more than one group' do
+      it 'return a hash with multiple key/value pairs' do
+        user.groups << [group1, group2]
+        group1.resources << resource1
+        group2.resources << resource2
+        group1.save
+        group2.save
+        expect(user.resources_by_group).to eq({group1 => group1.resources, group2 => group2.resources})
+      end
+    end
+
+  end
+
 end
