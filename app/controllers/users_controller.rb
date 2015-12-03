@@ -10,15 +10,18 @@ class UsersController < ApplicationController
 
   def join_group
     @group = Group.find(join_params)
-    if current_user.student
-      @group.students << current_user.student
-    else
-      @group.teacher = current_user.teacher
-    end
+    if !@group.users.include? current_user
+      @group.users << current_user
+    end   
     redirect_to groups_path
   end
 
   def leave_group
+    @group = Group.find(join_params)
+    #remove current_user from group/remove group from current_user
+    @group.users.delete(current_user)
+    @group.save
+    redirect_to groups_path
   end
 
 private
