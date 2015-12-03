@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: resources
+#
+#  id         :integer          not null, primary key
+#  group_id   :integer
+#  user_id    :integer
+#  title      :string
+#  link       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Resource, type: :model do
