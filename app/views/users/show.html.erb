@@ -1,16 +1,18 @@
-<h3>User Profile</h3>
-
 <div class="row">
-  <!-- column 1 -->
-<p>Name: <%= current_user.gmail_name %></p>
-<p>Groups:<br>
-
-  <ul>
-    <% current_user.groups.each do |group| %>
-      <li><%= link_to group.topic, group_path(group) %></li>
-    <% end %>
-  </ul>
-</p>
-  <!-- column 2 --> 
-  <%= render 'shared/activities' %>
+  <div class="col-md-4">
+    <h3>User Profile</h3>
+    <p>Name: <%= current_user.gmail_name %></p>
+    <p>Groups:<br>
+      <ul>
+        <% current_user.groups.each do |group| %>
+          <li><%= link_to group.topic, group_path(group) %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+  <div class="col-md-4">
+    <%= render 'shared/activities' %>
+  </div>
+  <div class="col-md-4">
+  </div>
 </div>
