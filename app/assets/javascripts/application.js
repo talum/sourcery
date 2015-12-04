@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require journal
 //= require turbolinks
+//= require newComment
 

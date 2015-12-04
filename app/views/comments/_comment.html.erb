@@ -1,0 +1,4 @@
+<li><%= comment.user.gmail_name %>: <%= comment.content %> | 
+    <% if comment.user == current_user %>
+      <%= render partial: "/resources/delete_comment", locals: {comment: comment} %> </li>
+    <% end %>

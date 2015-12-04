@@ -20,21 +20,19 @@
 
     <h3>Comments</h3>
     <ul>
+    <div class="container">
     <% @resource.comments.each do |comment| %>
-      <li><%= comment.user.gmail_name %>: <%= comment.content %> | 
-      <% if comment.user == current_user %>
-        <%= render partial: "delete_comment", locals: {comment: comment} %> </li>
-      <% end %>
+        <%= render 'comments/comment', {comment: comment} %>
     <% end %>
     </ul>
-
-    <%= form_for @comment do |f| %>
+    </div>
+    <%= form_for @comment, remote: true, html: {id: "new-comment-js"} do |f| %>
     <div class="form-group">
       <%= f.text_area :content, style: "min-width: 100%" %><br>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :resource_id, value: @resource.id %>
     </div>
-      <%= f.submit value="Add Comment", class: "btn btn-default" %>
+      <%= f.submit value="Add Comment", class: "btn btn-default"%>
     <% end %>
   </div>
 
