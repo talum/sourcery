@@ -3,6 +3,12 @@
 <%= link_to "Click to Edit", edit_resource_path(@resource) %>
 <p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
 <p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
+<br>
+
+<button href="#" id="show_hide">Show/Hide Resource Pane </button>
+<br>
+<br>
+<br>
 
 <div id="externalSiteContent">
   <iframe src="<%= @resource.link %>" width="1000" height="700" style="border:medium double rgb(0, 0, 0)"></iframe>
@@ -29,3 +35,4 @@
 <br>
 <br>
 <br>
+
