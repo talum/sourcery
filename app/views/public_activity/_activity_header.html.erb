@@ -1,2 +1,3 @@
-<%= time_ago_in_words(a.created_at) %> ago
-<%= a.owner ? a.owner.gmail_name : 'Guest' %>
+<small><%= time_ago_in_words(a.created_at) %> ago</small>
+<br>
+<strong><%= a.owner ? a.owner.gmail_name : 'Guest' %></strong>
