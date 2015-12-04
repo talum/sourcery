@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @groups = current_user.groups
+    load_activities
   end
 
   def groups
@@ -27,6 +28,10 @@ class UsersController < ApplicationController
 private
   def join_params
     params.require(:group_id)
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').where(owner_id: current_user.fellow_group_member_ids).limit(20)
   end
 
 end

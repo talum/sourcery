@@ -1,0 +1,7 @@
+<li>
+  <%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %>
+  <%= activity.owner ? activity.owner.gmail_name : 'Guest' %>
+  <% if a.trackable %>
+    commented "<%= a.trackable.content %>" on <%= link_to a.trackable.resource.title, resource_path(a.trackable.resource) %>.
+  <% end %>
+</li>

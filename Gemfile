@@ -28,6 +28,7 @@ gem 'annotate'
 gem 'better_errors'
 gem 'pry-byebug'
 gem 'awesome_print'
+gem 'public_activity'
 
 gem 'pg'
 gem 'figaro'

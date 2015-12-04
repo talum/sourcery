@@ -1,0 +1,8 @@
+
+<li>
+  <%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %>
+  <%= activity.owner ? activity.owner.name : 'Guest' %>
+  <%= if a.trackable %>
+    edited <%= link_to a.trackable.title, resource_path(a.trackable) %>.
+  <%= end %>
+</li>

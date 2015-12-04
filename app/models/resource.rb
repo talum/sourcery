@@ -11,7 +11,10 @@
 #  updated_at :datetime         not null
 #
 class Resource < ActiveRecord::Base
-require 'uri'
+  require 'uri'
+  include PublicActivity::Model
+  tracked except: :destroy, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
+
 
   belongs_to :group
   belongs_to :user
@@ -34,4 +37,4 @@ require 'uri'
     self.favorites.where(user_id: user.id).any?
   end
   
-end
+ end

@@ -11,6 +11,8 @@
 #
 
 class Comment < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked only: :create, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
   belongs_to :user
   belongs_to :resource
 

@@ -1,5 +1,7 @@
 <h3>User Profile</h3>
 
+<div class="row">
+  <!-- column 1 -->
 <p>Name: <%= current_user.gmail_name %></p>
 <p>Groups:<br>
 
@@ -9,3 +11,6 @@
     <% end %>
   </ul>
 </p>
+  <!-- column 2 --> 
+  <%= render 'shared/activities' %>
+</div>

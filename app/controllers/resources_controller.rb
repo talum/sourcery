@@ -56,4 +56,5 @@ private
     params.require(:resource).permit(:title, :link, :group_id)
   end
 
+
 end

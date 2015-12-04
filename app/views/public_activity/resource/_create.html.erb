@@ -1,0 +1,7 @@
+<li>
+  <%= a.created_at.strftime('%H:%M:%S %-d %B %Y') %>
+  <%= activity.owner ? activity.owner.gmail_name : 'Guest' %>
+  <% if a.trackable %>
+    added <%= link_to a.trackable.title, resource_path(a.trackable) %>.
+  <% end %>
+</li>
