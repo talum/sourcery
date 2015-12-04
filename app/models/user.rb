@@ -57,10 +57,10 @@ class User < ActiveRecord::Base
     groups.each_with_object({}) do |group, hash|
       hash[group] = group.favorites.where(user_id: self.id)
     end
+  end
 
   def fellow_group_member_ids
     UserGroup.select("user_id").where(group_id: self.group_ids).ids
-
   end
 
 end

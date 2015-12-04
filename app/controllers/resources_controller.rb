@@ -39,8 +39,9 @@ class ResourcesController < ApplicationController
   end
 
   def favorite
-    # @resource = Resource.find(params[:resource])
-    Favorite.find_or_create_by(user_id: current_user.id, resource_id: params[:resource])
+    @resource = Resource.find(params[:resource])
+    @favorite = Favorite.find_or_create_by(user_id: current_user.id, resource_id: params[:resource])
+    @resource.create_activity :favorite
     redirect_to :back
   end
 
