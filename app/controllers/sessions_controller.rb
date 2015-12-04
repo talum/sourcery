@@ -21,8 +21,8 @@ class SessionsController < ApplicationController
 
   def destroy
     @user = current_user
-    # @user.sign_in_count += 1
-    # @user.save
+    @user.sign_in_count += 1
+    @user.save
     session[:user_id] = nil
     redirect_to root_path
   end
