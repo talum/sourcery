@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        resource:
+          attributes:
+            link:
+              invalid: "must start with 'http://www.'"

@@ -10,14 +10,16 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Resource < ActiveRecord::Base
+require 'uri'
+
   belongs_to :group
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :favorites
   validates :title, presence: true
   validates :link, presence: true
+  validates :link, :format => URI::regexp(%w(http https))
 
   def likes_message(user)
     if !user_liked?(user)
