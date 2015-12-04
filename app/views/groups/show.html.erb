@@ -7,11 +7,9 @@
     <li><%= link_to resource.title, resource %>:
     <%= link_to "#{resource.link}", resource.link %></li>
     <ul> 
-      <% resource.favorites.each do |favorite| %>
-        <%= favorite.user.gmail_name %> likes this
-      <% end %>
+      <%= resource.likes_message(current_user) %>
     </ul>
-    <%= button_to "Favorite", favorite_path(:resource => resource) %></li>
+      <%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %>
   <% end %>
 </ul>
 

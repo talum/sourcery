@@ -26,10 +26,12 @@ gem 'annotate'
 gem 'better_errors'
 gem 'pry-byebug'
 gem 'awesome_print'
+gem 'public_activity'
 
 gem 'pg'
 gem 'figaro'
 gem "omniauth-google-oauth2", "~> 0.2.1"
+gem 'custom_error_message'
 
 gem 'simplecov', :require => false, :group => :test
 

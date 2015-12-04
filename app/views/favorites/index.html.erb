@@ -1,0 +1,12 @@
+<h3>My Favorites</h3>
+<ul>
+<% @favorites_by_group.each do |group_favorites| %>
+  <h4>Group: <%= link_to group_favorites[0].topic, group_favorites[0] %> </h4>
+  <% group_favorites[1].each do |favorite| %>
+   <li> Title: <%= link_to favorite.resource.title, favorite.resource %> 
+    <%= render partial: "/resources/#{FavoriteToggle.new(favorite.resource, current_user).already_favorited?}", locals: {resource: favorite.resource} %></li>
+  <% end %> 
+<% end %>
+</ul>
+
+

@@ -1,0 +1,6 @@
+<li>
+  <%= render 'public_activity/activity_header', {a: a} %>
+  <% if a.trackable %>
+    commented "<%= a.trackable.content %>" on <%= link_to a.trackable.resource.title, resource_path(a.trackable.resource) %>.
+  <% end %>
+</li>

@@ -1,0 +1,7 @@
+
+<li>
+  <%= render 'public_activity/activity_header', {a: a} %>
+  <%= if a.trackable %>
+    edited <%= link_to a.trackable.title, resource_path(a.trackable) %>.
+  <%= end %>
+</li>

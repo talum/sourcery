@@ -53,4 +53,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def favorites_by_group
+    groups.each_with_object({}) do |group, hash|
+      hash[group] = group.favorites.where(user_id: self.id)
+    end
+  end
+
+  def fellow_group_member_ids
+    UserGroup.where(group_id: self.group_ids).pluck(:user_id)
+  end
+
 end
