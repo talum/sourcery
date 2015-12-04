@@ -5,9 +5,7 @@
 <ul>
 <% @groups.each do |group| %>
   <li><%= link_to group.topic, group_path(group) %>
-  <!-- consider group admin only function --> 
-  <%= button_to "delete", group, method: :delete %>
-
+    
   <%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group} %>
   </li>
 <% end %>
