@@ -1,38 +1,43 @@
-<h3>Title: <%=@resource.title%></h3>
-<%= render partial: FavoriteToggle.new(@resource, current_user).already_favorited?, locals: {resource: @resource} %><br>
-<%= link_to "Click to Edit", edit_resource_path(@resource) %>
-<p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
-<p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
-<br>
+<div class="row">
+  <h3>Title: <%=@resource.title%></h3>
+  <%= render partial: FavoriteToggle.new(@resource, current_user).already_favorited?, locals: {resource: @resource} %><br>
+  <%= link_to "Click to Edit", edit_resource_path(@resource) %>
+  <p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
+  <p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
+  <br>
 
-<button href="#" id="show_hide">Show/Hide Resource Pane </button>
-<br>
-<br>
-<br>
-
-<div id="externalSiteContent">
-  <iframe src="<%= @resource.link %>" width="1000" height="700" style="border:medium double rgb(0, 0, 0)"></iframe>
+  <button href="#" id="show_hide">Show/Hide Resource Pane </button>
 </div>
 
-<h3>Comments</h3>
-<ul>
-<% @resource.comments.each do |comment| %>
-  <li><%= comment.user.gmail_name %>: <%= comment.content %> | 
-  <% if comment.user == current_user %>
-    <%= render partial: "delete_comment", locals: {comment: comment} %> </li>
-  <% end %>
-<% end %>
-</ul>
+<div class="row">
+  <div class="col-md-8">
+    <div id="externalSiteContent" width="650">
+      <iframe src="<%= @resource.link %>" width="650" height="400" style="border:medium double rgb(0, 0, 0)"></iframe>
+    </div>
+  </div>
 
-<%= form_for @comment do |f| %>
-  <%= f.text_area :content, :rows => "8", :cols => "50" %><br>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :resource_id, value: @resource.id %>
-  <%= f.submit value="Add Comment" %>
-<% end %>
-<br>
-<br>
-<br>
-<br>
-<br>
+  <div class="col-md-3">
+
+    <h3>Comments</h3>
+    <ul>
+    <% @resource.comments.each do |comment| %>
+      <li><%= comment.user.gmail_name %>: <%= comment.content %> | 
+      <% if comment.user == current_user %>
+        <%= render partial: "delete_comment", locals: {comment: comment} %> </li>
+      <% end %>
+    <% end %>
+    </ul>
+
+    <%= form_for @comment do |f| %>
+    <div class="form-group">
+      <%= f.text_area :content, style: "min-width: 100%" %><br>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :resource_id, value: @resource.id %>
+    </div>
+      <%= f.submit value="Add Comment", class: "btn btn-default" %>
+    <% end %>
+  </div>
+
+    <div class="col-md-1"></div>
+</div>
 

@@ -1,1 +1,3 @@
-<%= button_to "Favorite", favorite_path(:resource => resource) %>
+<%= link_to favorite_path(:resource => resource), method: :post do %>
+  <i class="fa fa-magic"></i> Favorite
+<% end %>
