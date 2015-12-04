@@ -15,6 +15,7 @@ class Group < ActiveRecord::Base
   has_many :students, through: :users
   has_many :teachers, through: :users
   has_many :resources
+  has_many :google_docs
   validates :topic, presence: true
 
 end

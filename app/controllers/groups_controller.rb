@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @resource = Resource.new
+    @google_doc = GoogleDoc.new
   end
 
   def index
@@ -46,6 +47,5 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:topic, :description)
   end
-
 
 end

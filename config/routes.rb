@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   post 'choice', to: 'sessions#choice', as: 'choice'
   post 'favorite', to: 'resources#favorite', as: 'favorite'
 
-
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   post 'users/join_group' => 'users#join_group', as: 'join_group'
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
   resources :resources
   resources :groups
   resources :comments, only: [:create, :destroy]
+  resources :google_docs, only: [:create, :destroy]
  
   root to: "home#show"
 

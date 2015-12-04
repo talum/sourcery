@@ -27,3 +27,17 @@
 <h3>Add New Resource</h3>
 
 <%= render 'resources/form', group_id: @group.id %>
+
+<h3>Add a Google Doc</h3>
+<%= form_for @google_doc do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.hidden_field :group_id, value: @group.id %>
+  <%= f.submit %>
+<% end %>
+
+
+<h3>Our Docs</h3>
+<% @group.google_docs.each do |doc| %>
+  <li> <%= link_to doc.title, doc.url %></li>
+<% end %>
