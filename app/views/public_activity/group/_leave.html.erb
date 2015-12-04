@@ -1,0 +1,6 @@
+<li>
+  <%= render 'public_activity/activity_header', {a: a} %>
+  <% if a.trackable %>
+    left <%= link_to a.trackable.topic, group_path(a.trackable) %>.
+  <% end %>
+</li>

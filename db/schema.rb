@@ -76,13 +76,6 @@ ActiveRecord::Schema.define(version: 20151203231716) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "upvotes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "resource_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "user_groups", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "group_id"
