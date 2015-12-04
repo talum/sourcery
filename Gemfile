@@ -35,6 +35,10 @@ gem 'figaro'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'custom_error_message'
 
+gem 'twitter-bootswatch-rails', '~> 3.3.4'
+gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
+gem 'therubyracer'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
