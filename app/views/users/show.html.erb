@@ -5,7 +5,7 @@
 
   <ul>
     <% current_user.groups.each do |group| %>
-      <li><%= group.topic %></li>
+      <li><%= link_to group.topic, group_path(group) %></li>
     <% end %>
   </ul>
 </p>
