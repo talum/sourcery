@@ -2,12 +2,12 @@
 
 <%= link_to "Add New Group", new_group_path %>
 
-<ul>
+<table class="table">
 <% @groups.each do |group| %>
-  <li><%= link_to group.topic, group_path(group) %>
-    
-  <%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group} %>
-  </li>
+  <tr>
+    <td><%= link_to group.topic, group_path(group) %></td>
+    <td><%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group} %></td>
+  </tr>
 <% end %>
-</ul>
+</table>
 

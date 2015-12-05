@@ -25,11 +25,13 @@
 <%= render 'resources/form', group_id: @group.id %>
 
 <h3>Add a Google Doc</h3>
-<%= form_for @google_doc do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for @google_doc, html: {class: "form-inline"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
   <%= f.hidden_field :group_id, value: @group.id %>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>
 
 
