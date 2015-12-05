@@ -19,7 +19,7 @@
   <div class="col-md-3">
 
     <h3>Comments</h3>
-    <ul class="container">
+    <ul class="comment-container">
       <% @resource.comments.each do |comment| %>
           <%= render 'comments/comment', {comment: comment} %>
       <% end %>
