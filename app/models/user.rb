@@ -16,6 +16,7 @@
 #  oauth_expires_at :datetime
 #  gmail_name       :string
 #  sign_in_count    :integer          default(0)
+#  image            :string
 #
 
 class User < ActiveRecord::Base

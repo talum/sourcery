@@ -29,6 +29,6 @@ class Group < ActiveRecord::Base
   end
 
   def remove_member(user)
-    self.users.delete(user)
+    self.users.delete(user) if self.users.include?(user)
   end
 end

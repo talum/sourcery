@@ -16,11 +16,13 @@
 #  oauth_expires_at :datetime
 #  gmail_name       :string
 #  sign_in_count    :integer          default(0)
+#  image            :string
 #
 
 FactoryGirl.define do
   factory :user do
-    
+    gmail_name "Baller"
+    email "baller@email.com"
   end
 
 end
