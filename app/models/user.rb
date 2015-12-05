@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def fellow_group_member_ids
-    UserGroup.where(group_id: self.group_ids).pluck(:user_id)
+    UserGroup.where(group_id: self.group_ids).pluck(:user_id).uniq
   end
 
 end
