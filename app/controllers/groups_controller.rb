@@ -22,7 +22,6 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group)
     rescue ActiveRecord::RecordInvalid
       render 'new'
-    
   end
 
   def edit
