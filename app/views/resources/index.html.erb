@@ -3,8 +3,7 @@
 <% @resources_by_group.each do |group_resources| %>
   <h4>Group: <%= link_to group_resources[0].topic, group_resources[0] %> </h4>
   <% group_resources[1].each do |resource| %>
-   <li> Title: <%= link_to resource.title, resource %> 
-    <%= render partial: FavoriteToggle.new(resource, current_user).already_favorited?, locals: {resource: resource} %></li>
+    <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
   <% end %> 
 <% end %>
 </ul>

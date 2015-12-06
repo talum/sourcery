@@ -63,7 +63,8 @@ class ResourcesController < ApplicationController
   def save
     @resource = Resource.new(resource_params)
     @resource.save
-    render json: "Resource saved!"
+    resource_item = render_to_string(partial: "resources/resource", locals: {resource: @resource, current_user: current_user})
+    render json: {message: "Resource saved!", resource_item: resource_item}
   end
 
 private

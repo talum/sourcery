@@ -1,8 +1,7 @@
-$(document).on("ready", function(){
+$(document).on("page:change", function(){
   searchListener();
   clearListener();
   saveResourceListener();
-
 });
 
 function searchListener(){
@@ -19,7 +18,9 @@ function clearListener(){
 }
 
 function saveResourceListener(){
-  $("#article-results").on("ajax:success", "#save-resource-btn", function(){
+  $("#article-results").on("ajax:success", ".save-resource-btn", function(event, data){
     $(this).html("Resource saved!");
+    var resourceItemHtml = data.resource_item;
+    $(".resources-container").append(resourceItemHtml);
   });
 }
