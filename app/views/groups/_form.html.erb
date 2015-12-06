@@ -1,4 +1,16 @@
 <%= form_for @group do |f| %>
+  <% if @group.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h4>
+
+      <ul>
+      <% @group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.label :topic %>
   <%= f.text_field :topic %>
   <%= f.label :description %>
