@@ -36,6 +36,7 @@ gem 'custom_error_message'
 gem 'simplecov', :require => false, :group => :test
 
 gem 'google_drive'
+gem 'yt', '~> 0.13.7'
 
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'

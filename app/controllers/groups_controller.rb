@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @resource = Resource.new
     @google_doc = GoogleDoc.new
+    @video = Video.new
   end
 
   def index

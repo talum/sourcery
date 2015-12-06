@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :google_docs, only: [:create, :destroy]
   resources :favorites, only: [:index]
+  resources :videos, only: [:index, :new, :create]
  
   root to: "home#show"
 

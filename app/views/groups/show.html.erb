@@ -20,7 +20,7 @@
   <% end %>
 </ul>
 
-<h3>Add New Resource</h3>
+<h3>Add New Article</h3>
 
 <%= render 'resources/form', group_id: @group.id %>
 
@@ -33,6 +33,10 @@
   <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
+
+<h3>Add a YouTube Video</h3>
+
+<%= render 'videos/form', video: @video %>
 
 
 <h3>Our Docs</h3>
