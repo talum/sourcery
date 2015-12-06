@@ -1,6 +1,15 @@
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
 
+<h4>Get Started</h4>
+<%= form_tag ("/query", method: "get" do %>
+  <%= text_field_tag(:q) %>
+  <%= f.submit_tag("Search") %>
+<% end %>
+
+<h4>Results</h4>
+<div class="results"></div>
+
 <h4>Resources</h4>
 <ul>
   <% @group.resources.each do |resource| %>
