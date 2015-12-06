@@ -8,7 +8,9 @@ class CommentsPdf < Prawn::Document
   end
 
   def header
-    image "#{Rails.root}/app/assets/images/header.png", width: 530, height: 150
+    bounding_box([120, cursor], :width => 600) do
+      image "#{Rails.root}/app/assets/images/header.png", width: 300, height: 75
+    end
   end
 
   def text_content
