@@ -4,6 +4,7 @@
 <h4>Get Started</h4>
 <%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
   <%= text_field_tag(:q) %>
+  <%= hidden_field_tag(:group_id, @group.id) %>
   <%= submit_tag("Search", class: "btn btn-primary") %>
 <% end %>
 

@@ -1,1 +1,11 @@
-<%= link_to article.title, article.link, :target => "_blank" %><br>
+<%= link_to article.title, article.link, :target => "_blank" %>
+<div class="resource-handler">
+  <%= form_for Resource.new, remote: true, html:{id: "save-resource-btn"} do |f| %>
+    <%= f.hidden_field :title, value: article.title %>
+    <%= f.hidden_field :link, value: article.link %>
+    <%= f.hidden_field :group_id, value: group_id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Save" %>
+  <% end %>
+</div>
+<br>

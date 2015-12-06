@@ -60,6 +60,12 @@ class ResourcesController < ApplicationController
     redirect_to :back
   end
 
+  def save
+    @resource = Resource.new(resource_params)
+    @resource.save
+    render json: "Resource saved!"
+  end
+
 private
   def resource_params
     params.require(:resource).permit(:title, :link, :group_id, :user_id)

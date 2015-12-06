@@ -1,6 +1,7 @@
 $(document).on("ready", function(){
   searchListener();
   clearListener();
+  saveResourceListener();
 
 });
 
@@ -14,5 +15,11 @@ function searchListener(){
 function clearListener(){
   $("#clear-search-results-button").on("click", function(){
     $("#article-results").html("");
-  })
+  });
+}
+
+function saveResourceListener(){
+  $("#article-results").on("ajax:success", "#save-resource-btn", function(){
+    $(this).html("Resource saved!");
+  });
 }
