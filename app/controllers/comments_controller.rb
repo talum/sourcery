@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    @resource = Resource.find(comment_params[:resource_id])
     if @comment.save
-      redirect_to @resource
+      html_string = render_to_string 'comments/_comment', locals: {comment: @comment}, layout: false
+      render json: {template: html_string}
     else
       render 'resources/show'
     end
@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
     @resource = @comment.resource
     @comment.destroy
     redirect_to @resource
-
   end
 
 private 

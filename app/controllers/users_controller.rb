@@ -11,17 +11,15 @@ class UsersController < ApplicationController
 
   def join_group
     @group = Group.find(join_params)
-    if !@group.users.include? current_user
-      @group.users << current_user
-      @group.create_activity :join
-    end   
+    @group.add_member(current_user)
+    @group.create_activity :join  
     redirect_to @group
   end
 
   def leave_group
     @group = Group.find(join_params)
+    @group.remove_member(current_user)
     @group.create_activity :leave
-    @group.users.delete(current_user)
     @group.save
     redirect_to groups_path
   end

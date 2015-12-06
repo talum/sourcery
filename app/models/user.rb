@@ -16,6 +16,7 @@
 #  oauth_expires_at :datetime
 #  gmail_name       :string
 #  sign_in_count    :integer          default(0)
+#  image            :string
 #
 
 class User < ActiveRecord::Base
@@ -33,6 +34,8 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.gmail_name = auth.info.name
       user.email = auth.info.email
+      user.gender = auth.extra.raw_info.gender
+      user.image = auth.info.image
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
@@ -60,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def fellow_group_member_ids
-    UserGroup.where(group_id: self.group_ids).pluck(:user_id)
+    UserGroup.where(group_id: self.group_ids).pluck(:user_id).uniq
   end
 
 end

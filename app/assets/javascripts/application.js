@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require journal
 //= require turbolinks
-//= require_tree .
+//= require newComment
+//= require resources/toggle_show_hide_resource.js
+

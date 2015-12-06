@@ -1,1 +1,3 @@
-<%= button_to "Remove From Favorites", unfavorite_path(:resource => resource) %>
+<%= link_to unfavorite_path(:resource => resource), method: :post, class: "btn btn-primary btn-xs" do %>
+  <i class="fa fa-magic"></i> Unfavorite
+<% end %>

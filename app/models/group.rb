@@ -22,4 +22,13 @@ class Group < ActiveRecord::Base
   has_many :favorites, through: :resources
   validates :topic, presence: true
 
+  def add_member(user)
+    if !self.users.include?(user)
+      self.users << user 
+    end
+  end
+
+  def remove_member(user)
+    self.users.delete(user) if self.users.include?(user)
+  end
 end

@@ -16,6 +16,7 @@
 #  oauth_expires_at :datetime
 #  gmail_name       :string
 #  sign_in_count    :integer          default(0)
+#  image            :string
 #
 
 require 'rails_helper'
@@ -82,6 +83,42 @@ RSpec.describe User, type: :model do
       end
     end
 
+  end
+
+
+  describe '#fellow_group_member_ids' do
+    let(:jim){FactoryGirl.create(:user, gmail_name: "Jim")}
+    let(:maddy){FactoryGirl.create(:user, gmail_name: "Maddy")}
+    let(:meredith){FactoryGirl.create(:user, gmail_name: "Meredith")}
+    let(:tracy){FactoryGirl.create(:user, gmail_name: "Tracy")}
+    let(:group_one){FactoryGirl.create(:group, topic: "dinos")}
+    let(:group_two){FactoryGirl.create(:group, topic: "tacos")}
+    let(:group_three){FactoryGirl.create(:group, topic: "parachuting")}
+    let(:group_four){FactoryGirl.create(:group, topic: "paragliding")}
+
+    context 'when users Jim and Maddy have joined group 1' do
+      before do 
+        group_one.users << jim 
+        group_one.users << maddy
+      end
+      it 'returns the ids of all other members of groups of which Jim is a member' do
+        expect(jim.fellow_group_member_ids).to include(jim.id, maddy.id)
+      end
+    end
+
+   context 'when user Jim has joined groups 1 and 2, and Maddy is in group 1, Meredith in group 2' do
+    before do 
+      group_one.users << jim 
+      group_one.users << maddy
+      group_two.users << jim 
+      group_two.users << meredith
+      group_three.users << tracy 
+    end
+    it 'returns the ids of all other members of groups of which Jim is a member' do
+      expect(jim.fellow_group_member_ids).to include(jim.id, maddy.id, meredith.id)
+      expect(jim.fellow_group_member_ids).to_not include(tracy.id)
+    end
+  end
   end
 
 end
