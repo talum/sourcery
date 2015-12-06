@@ -13,7 +13,7 @@
 class Resource < ActiveRecord::Base
   require 'uri'
   include PublicActivity::Model
-  tracked except: :destroy, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
+  tracked only: :create, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
 
 
   belongs_to :group
