@@ -17,12 +17,11 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.save!
     current_user.groups << @group
-    if @group.save
-      redirect_to @group
-    else
-      render "new"
-    end
+    redirect_to group_path(@group)
+    rescue ActiveRecord::RecordInvalid
+      render 'new'
     
   end
 
