@@ -16,7 +16,7 @@ class ResourcesController < ApplicationController
       redirect_to @resource
     else
       @group = Group.find(resource_params[:group_id])
-      render 'groups/show'
+      redirect_to group_path(@group)
     end
   end
 

@@ -15,4 +15,5 @@
 //= require journal
 //= require turbolinks
 //= require newComment
+//= require resources/toggle_show_hide_resource.js
 
