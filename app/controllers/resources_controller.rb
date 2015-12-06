@@ -43,7 +43,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     @group = @resource.group
     @resource.destroy
-    render json: "GONE!"
+    redirect_to @group
   end
 
   def favorite

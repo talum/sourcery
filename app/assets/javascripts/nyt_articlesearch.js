@@ -26,8 +26,8 @@ function saveResourceListener(){
   });
 }
 
-function destroyResourceListener(){
-  $(".resources-container").on("ajax:success", ".destroy-resource-js", function(){
-    debugger;
-  });
-}
+// function destroyResourceListener(){
+//   $(".resources-container").on("ajax:success", ".destroy-resource-js", function(){
+//     debugger;
+//   });
+// }
