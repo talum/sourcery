@@ -2,13 +2,18 @@
 <p>Description: <%= @group.description %></p>
 
 <h4>Get Started</h4>
-<%= form_tag ("/query", method: "get" do %>
+<%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
   <%= text_field_tag(:q) %>
-  <%= f.submit_tag("Search") %>
+  <%= submit_tag("Search") %>
 <% end %>
 
+
+<h4>Some Kind of Graph/Visualization</h4>
+
 <h4>Results</h4>
-<div class="results"></div>
+<div id="article-results">
+  <!-- list of articles formatted w/ save option, which creates resource -->
+</div>
 
 <h4>Resources</h4>
 <ul>
