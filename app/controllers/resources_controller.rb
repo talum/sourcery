@@ -8,6 +8,15 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @comment = Comment.new
+    @comments = @resource.comments
+
+    respond_to do |format|
+      format.html
+      format.pdf do 
+        pdf = CommentsPdf.new(@comments, @resource)
+        send_data pdf.render, filename: 'comments.pdf', type: 'application/pdf'
+      end
+    end
   end
 
   def create

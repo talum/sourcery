@@ -40,6 +40,7 @@ gem 'google_drive'
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
 gem 'therubyracer'
+gem 'prawn'
 
 
 # Use ActiveModel has_secure_password

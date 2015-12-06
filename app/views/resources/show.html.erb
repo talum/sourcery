@@ -33,6 +33,9 @@
     </div>
       <%= f.submit "Add Comment", class: "btn btn-default"%>
     <% end %>
+    <br>
+    <%= link_to "Send Comments to PDF", resource_path(@resource, format: :pdf), class: "btn btn-info" %>
+    <br>
   </div>
 
     
