@@ -2,9 +2,11 @@
 <ul>
 <% @resources_by_group.each do |group_resources| %>
   <h4>Group: <%= link_to group_resources[0].topic, group_resources[0] %> </h4>
-  <% group_resources[1].each do |resource| %>
-    <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
-  <% end %> 
+  <ul class="resources-container">
+    <% group_resources[1].each do |resource| %> 
+      <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
+    <% end %> 
+  </ul>
 <% end %>
 </ul>
 

@@ -2,6 +2,7 @@ $(document).on("page:change", function(){
   searchListener();
   clearListener();
   saveResourceListener();
+  destroyResourceListener();
 });
 
 function searchListener(){
@@ -22,5 +23,11 @@ function saveResourceListener(){
     $(this).html("Resource saved!");
     var resourceItemHtml = data.resource_item;
     $(".resources-container").append(resourceItemHtml);
+  });
+}
+
+function destroyResourceListener(){
+  $(".resources-container").on("ajax:success", ".destroy-resource-js", function(){
+    debugger;
   });
 }
