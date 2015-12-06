@@ -1,7 +1,7 @@
 <%= form_for @resource, html: {class: "form-inline"} do |f| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
-      <h4><%= pluralize(@resource.errors.count, "error") %> prohibited this post from being saved:</h4>
+      <h4><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h4>
 
       <ul>
       <% @resource.errors.full_messages.each do |msg| %>
