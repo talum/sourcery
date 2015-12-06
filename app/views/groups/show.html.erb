@@ -30,6 +30,7 @@
 <%= form_for @google_doc do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.select :type, options_for_select(["Spreadsheet"])%>
   <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.submit %>
 <% end %>
