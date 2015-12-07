@@ -17,6 +17,7 @@ class Group < ActiveRecord::Base
   has_many :users, through: :user_groups
   has_many :students, through: :users
   has_many :teachers, through: :users
+  has_many :comments, through: :resources
   has_many :resources
   has_many :google_docs
   has_many :favorites, through: :resources
@@ -24,6 +25,12 @@ class Group < ActiveRecord::Base
 
   def self.most_resources
     self.joins(:resources).select('groups.*, COUNT(resources.id) as resources_count').group('groups.id').order('resources_count DESC').limit(10)
+  end
+
+  def comments_over_time
+    # comments.group_by{|comment| comment.created_at.to_date}.map{|k,v| {k => v.length}}
+    comments.group_by{|comment| comment.created_at.sec }.map{|k,v| {k => v.length}}
+
   end
 
   def add_member(user)
