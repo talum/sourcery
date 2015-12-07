@@ -2,7 +2,7 @@ $(document).on("page:change", function(){
   searchListener();
   clearListener();
   saveResourceListener();
-  destroyResourceListener();
+  // destroyResourceListener();
 });
 
 function searchListener(){
