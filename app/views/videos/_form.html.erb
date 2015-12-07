@@ -4,8 +4,7 @@
   <div class="form-group">
     <%= f.label :link %>
     <%= f.text_field :link, class: 'form-control', required: true %>
-    <!-- <span class="help-block">A link to the video on YouTube.</span> -->
   </div>
-
+  <%= f.hidden_field :group_id, value: group_id %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

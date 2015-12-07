@@ -13,6 +13,13 @@
   <% end %>
 </ul>
 
+<h4>Videos</h4>
+<ul>
+  <% @group.videos.each do |video| %>
+  <%= link_to "#{video.title}", "#{video.link}" %>
+  <% end %>
+</ul>
+
 <h4>Group Members</h4>
 <ul>
   <% @group.users.each do |user| %>
@@ -42,6 +49,6 @@
 
 <h3>Add a YouTube Video</h3>
 
-<%= render 'videos/form', video: @video %>
+<%= render 'videos/form', group_id: @group.id %>
 
 <p></p>
