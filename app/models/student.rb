@@ -76,7 +76,7 @@ class Student < ActiveRecord::Base
 
   #Returns the student object who has made the most resources
   def self.with_most_resources
-    {student: Student.find(self.number_of_resources_by_student.first.first), num_resources: self.number_of_resources_by_student.first.last}
+    {student: Student.find(self.array_of_num_of_resources_by_student.first.first), num_resources: self.array_of_num_of_resources_by_student.first.last}
   end
 
 end
