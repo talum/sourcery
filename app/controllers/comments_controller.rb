@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @resource = @comment.resource
     @comment.destroy
-    redirect_to @resource
+    render "/resources/show"
   end
 
 private 

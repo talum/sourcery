@@ -17,6 +17,7 @@ class Student < ActiveRecord::Base
     self.all.each_with_object([]) do |student, array|
       comment_count = student.comments.count
       array << {name: student.user.gmail_name, comment_count: comment_count}
+      array.sort! {|a,b| b[:comment_count] <=> a[:comment_count] }
     end
   end
 
