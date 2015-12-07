@@ -9,11 +9,12 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    # binding.pry
     if @video.save
       flash[:success] = 'Video added!'
       redirect_to videos_path(@videos)
     else
-      render :new
+      render partial: 'videos/form'
     end
   end
 
