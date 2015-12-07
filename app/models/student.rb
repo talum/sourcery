@@ -21,6 +21,32 @@ class Student < ActiveRecord::Base
     end
   end
 
+  def self.max_comments_by_student
+    self.number_of_comments_by_student.first
+  end
+
+  def self.number_of_resources_by_student
+    self.all.each_with_object([]) do |student, array|
+      resource_count = student.resources.count
+      array << {name: student.user.gmail_name, resource_count: resource_count}
+      array.sort! {|a,b| b[:resource_count] <=> a[:resource_count] }
+    end
+  end
+
+  def self.max_resources_by_student
+    self.number_of_resources_by_student.first
+  end
+
+  def average_comment_length
+    counter = 0
+    self.comments.each do |comment|
+      array_of_words = comment.content.split(" ")
+      counter += array_of_words.length
+    end 
+    counter / self.comments.length
+  end 
+   
+
   
 
 

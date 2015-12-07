@@ -31,4 +31,12 @@ class Group < ActiveRecord::Base
   def remove_member(user)
     self.users.delete(user) if self.users.include?(user)
   end
+
+  def members
+    self.users.each_with_object([]) do |user, array|
+      array << {name: user.gmail_name, email: user.email}
+    end  
+  end 
+
+
 end
