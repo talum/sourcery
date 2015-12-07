@@ -29,7 +29,7 @@
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
-    <%= f.select :type, options_for_select(["Spreadsheet"])%>
+    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
     <%= f.hidden_field :group_id, value: @group.id %>
     <%= f.submit class: "btn btn-primary" %>
   </div>

@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20151205165329) do
   create_table "google_docs", force: :cascade do |t|
     t.string  "title"
     t.string  "url"
-    t.string  "type"
+    t.string  "doc_type"
     t.integer "group_id"
   end
 
