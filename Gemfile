@@ -36,10 +36,13 @@ gem 'custom_error_message'
 gem 'simplecov', :require => false, :group => :test
 
 gem 'google_drive'
+gem 'httparty'
+gem 'recursive-open-struct'
 
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
 gem 'therubyracer'
+gem 'prawn'
 
 
 # Use ActiveModel has_secure_password

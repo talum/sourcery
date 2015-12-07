@@ -3,7 +3,7 @@ class CreateGoogleDocs < ActiveRecord::Migration
     create_table :google_docs do |t|
       t.string :title
       t.string :url
-      t.string :type
+      t.string :doc_type
       t.integer :group_id
     end
   end

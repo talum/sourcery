@@ -1,15 +1,27 @@
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
 
+<h4>Get Started</h4>
+<%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
+  <%= text_field_tag(:q) %>
+  <%= hidden_field_tag(:group_id, @group.id) %>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>
+
+<%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
+
+
+<h4>Some Kind of Graph/Visualization</h4>
+
+<h4>Results</h4>
+<div id="article-results">
+  <!-- list of articles formatted w/ save option, which adds resource to group and user-->
+</div>
+
 <h4>Resources</h4>
-<ul>
+<ul class="resources-container">
   <% @group.resources.each do |resource| %>
-    <li><%= link_to resource.title, resource %>:
-    <%= link_to "#{resource.link}", resource.link %></li>
-    <ul> 
-      <%= resource.likes_message(current_user) %>
-    </ul>
-      <%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %>
+    <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
   <% end %>
 </ul>
 
@@ -29,9 +41,10 @@
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
+    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
-  <%= f.hidden_field :group_id, value: @group.id %>
-  <%= f.submit class: "btn btn-primary" %>
 <% end %>
 
 

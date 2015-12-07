@@ -18,4 +18,5 @@
 //= require newComment
 //= require teachers/studentCommentGraph
 //= require resources/toggle_show_hide_resource
+//= require nyt_articlesearch
 

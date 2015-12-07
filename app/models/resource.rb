@@ -13,13 +13,13 @@
 class Resource < ActiveRecord::Base
   require 'uri'
   include PublicActivity::Model
-  tracked except: :destroy, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
+  tracked only: :create, owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
 
 
   belongs_to :group
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   validates :title, presence: true
   validates :link, presence: true
   validates :link, :format => URI::regexp(%w(http https))
