@@ -10,9 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require journal
 //= require turbolinks
 //= require newComment
+//= require teachers/studentCommentGraph
+//= require resources/toggle_show_hide_resource
 
