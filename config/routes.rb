@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'choice', to: 'sessions#choice', as: 'choice'
   post 'favorite', to: 'resources#favorite', as: 'favorite'
   post 'unfavorite', to: 'resources#unfavorite', as: 'unfavorite'
+  get 'query', to: "queries#create", as: 'query'
+  post 'save', to: "resources#save", as: 'save'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]

@@ -43,7 +43,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
     @group = @resource.group
     @resource.destroy
-    redirect_to @group
+    redirect_to :back
   end
 
   def favorite
@@ -58,6 +58,13 @@ class ResourcesController < ApplicationController
     @favorite = Favorite.find_by(user_id: current_user.id, resource_id: params[:resource])
     @favorite.destroy
     redirect_to :back
+  end
+
+  def save
+    @resource = Resource.new(resource_params)
+    @resource.save
+    resource_item = render_to_string(partial: "resources/resource", locals: {resource: @resource, current_user: current_user})
+    render json: {message: "Resource saved!", resource_item: resource_item}
   end
 
 private

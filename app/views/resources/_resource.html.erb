@@ -1,0 +1,7 @@
+<li><%= link_to resource.title, resource %>:  <%= link_to "#{resource.link}", resource.link %>
+   <ul><%= resource.likes_message(current_user) %></ul>
+   <%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %>
+   <% if resource.user_id == current_user.id %>
+     <%= link_to("X", resource_path(resource), method: :delete, class: "destroy-resource-js") %>
+   <% end %>
+</li>
