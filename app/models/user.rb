@@ -42,6 +42,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.most_favorites
+    self.joins(:favorites).select("users.*, COUNT(favorites.id) as favorite_count").group("users.id").order("favorite_count DESC").limit(10)
+  end
+
+  def self.most_favorites_with_count
+    self.most_favorites.each_with_object([]) do |resource, array|
+      array.push(title: resource.title, count: resource.favorites.count)
+    end
+  end
+
   def firstname
     self.gmail_name.split(" ").first
   end

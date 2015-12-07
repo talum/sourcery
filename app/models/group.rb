@@ -22,6 +22,10 @@ class Group < ActiveRecord::Base
   has_many :favorites, through: :resources
   validates :topic, presence: true
 
+  def self.most_resources
+    self.joins(:resources).select('groups.*, COUNT(resources.id) as resources_count').group('groups.id').order('resources_count DESC').limit(10)
+  end
+
   def add_member(user)
     if !self.users.include?(user)
       self.users << user 
