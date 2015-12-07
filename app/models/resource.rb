@@ -24,6 +24,26 @@ class Resource < ActiveRecord::Base
   validates :link, presence: true
   validates :link, :format => URI::regexp(%w(http https))
 
+  def self.most_popular_resource_by_comments
+    self.joins(:comments).select('resources.*, COUNT(comments.id) as comment_count').group('resources.id').order('comment_count DESC').limit(10)
+  end
+
+  def self.most_popular_resource_by_comments_with_count
+    self.most_popular_resource_by_comments.each_with_object([]) do |resource, array|
+      array.push(title: resource.title, count: resource.comments.count)
+    end
+  end
+
+  def self.most_popular_resource_by_favorites
+    self.joins(:favorites).select('resources.*, COUNT(favorites.id) as favorite_count').group('resources.id').order('favorite_count DESC').limit(10)
+  end
+
+  def self.most_popular_resource_by_favorites_with_count
+    self.most_popular_resource_by_favorites.each_with_object([]) do |resource, array|
+      array.push(title: resource.title, count: resource.favorites.count)
+    end
+  end
+
   def likes_message(user)
     if !user_liked?(user)
       "<strong>#{self.favorites.count} people</strong> like this resource".html_safe
