@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_one :student
   has_one :teacher
 
+ 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
@@ -65,5 +66,6 @@ class User < ActiveRecord::Base
   def fellow_group_member_ids
     UserGroup.where(group_id: self.group_ids).pluck(:user_id).uniq
   end
+
 
 end
