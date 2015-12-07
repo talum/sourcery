@@ -16,7 +16,7 @@
 <h4>Videos</h4>
 <ul>
   <% @group.videos.each do |video| %>
-  <%= link_to "#{video.title}", "#{video.link}" %>
+  <li><%= link_to "#{video.title}", "#{video.link}" %></li>
   <% end %>
 </ul>
 
