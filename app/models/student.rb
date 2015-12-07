@@ -39,7 +39,7 @@ class Student < ActiveRecord::Base
 
   #return the student object who has commented the most
   def self.with_most_comments
-    {student: Student.find(self.num_comments_by_student.first.first), num_comments: self.num_comments_by_student.first.last}
+    {student: Student.find(self.array_of_num_comments_by_student.first.first), num_comments: self.array_of_num_comments_by_student.first.last}
   end
 
   def average_comment_length

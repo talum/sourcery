@@ -1,5 +1,14 @@
 This is where we will display our beautiful analytics!
 
+<h4> Top Commenter: <h4>
+  <strong> Name: </strong> <%= @top_commenter[:student].user.gmail_name %><br>
+  <strong> Number of Comments: </strong> <%= @top_commenter[:num_comments] %><br>
+  <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].average_comment_length %><br>
+
+<br>
+
 <div id="student-comment-graph">
+  Number of comments by student:
+  <br>
   
 </div>
