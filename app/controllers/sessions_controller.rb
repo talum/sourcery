@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
     if @user.sign_in_count > 0
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       render '/sessions/_teacher_student_form.html'
     end 
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     else
       Student.create(user_id: current_user.id )
     end
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 
   def destroy
