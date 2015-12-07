@@ -3,18 +3,27 @@
     <%= image_tag("students-collaborating.png", class: "img-responsive center-block") %>
   </div>
   <div class="col-md-6">
-  <% if current_user %>
-    <p>Welcome to Sourcery</p>
-
-  <% else %>
     <h1>Welcome to Sourcery</h1>
+  <% if current_user %>
+    <p>Go forth and share.</p>
+  <% else %>
     <p> Please login to view, create and join groups and to start sharing resources!</p>
   <% end %>
   </div>
 </div>
 
 <div class="row salmon">
-  <h2>About Sourcery</h2>
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-9">
+    <h2>About Sourcery</h2>
+    <p>Sourcery lets you collaborate in real time with your classmates on a research project.</p>
+    <p>Get started today!</p>
+  </div>
+</div>
+
+<div class="row salmon">
+  <h2>More text</h2>
   <p>Sourcery lets you collaborate in real time with your classmates on a research project.</p>
   <p>Get started today!</p>
 </div>
@@ -37,7 +46,7 @@
     <p>Bio</p>
   </div>
   <div class="col-md-3">
-    <%= image_tag("jimrectenwald.png", size: "140", class: "img-circle") %>
+    <%= image_tag("jimrectenwald.jpg", size: "140", class: "img-circle") %>
     <h4>Jim Rectenwald</h4>
     <p>Bio</p>
   </div>
