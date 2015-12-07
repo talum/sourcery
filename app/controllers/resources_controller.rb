@@ -21,12 +21,11 @@ class ResourcesController < ApplicationController
 
   def create
     @resource = Resource.new(resource_params)
-    if @resource.save
-      redirect_to @resource
-    else
-      @group = Group.find(resource_params[:group_id])
-      redirect_to group_path(@group)
-    end
+    @group = Group.find(resource_params[:group_id])
+    @resource.save!
+    redirect_to @resource
+    rescue ActiveRecord::RecordInvalid
+      redirect_to @group, :flash => { :error => @resource.errors.full_messages}
   end
 
   def edit

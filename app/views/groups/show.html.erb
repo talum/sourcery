@@ -38,7 +38,7 @@
 <%= render 'resources/form', group_id: @group.id %>
 
 <h3>Add a Google Doc</h3>
-<%= form_for @google_doc, html: {class: "form-inline"} do |f| %>
+<%= form_for (@google_doc || GoogleDoc.new), html: {class: "form-inline"} do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
