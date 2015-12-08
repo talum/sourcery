@@ -6,10 +6,14 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    if @video.save
-      redirect_to videos_path(@videos)
-    else
-      render partial: 'videos/form'
+    @video.save
+    # if @video.save
+    #   redirect_to videos_path(@videos)
+    # else
+    #   render partial: 'videos/form'
+    # end
+    respond_to do |format|
+      format.js { render action: '../groups/show', status: :created, location: @video}
     end
   end
 
