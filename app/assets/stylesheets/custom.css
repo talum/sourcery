@@ -29,3 +29,13 @@
 .gray{
   background-color:#eee;
 }
+
+.axis path,
+.axis line {
+  fill: #000;
+  stroke: #000;
+}
+
+.chart text {
+  fill: #EB6864;
+}
