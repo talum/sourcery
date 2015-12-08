@@ -39,6 +39,9 @@ gem 'google_drive'
 gem 'httparty'
 gem 'recursive-open-struct'
 
+gem 'yt', '~> 0.13.7'
+gem 'rails-observers'
+
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
 gem 'therubyracer'

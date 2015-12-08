@@ -1,0 +1,11 @@
+<%= form_for @video, html: {class: "form-inline"} do |f| %>
+  <%= render 'shared/youtube_errors', object: @video %>
+
+  <div class="form-group">
+    <%= f.label :link %>
+    <%= f.text_field :link, class: 'form-control', required: true %>
+  </div>
+  <%= f.hidden_field :group_id, value: group_id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

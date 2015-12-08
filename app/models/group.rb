@@ -20,6 +20,7 @@ class Group < ActiveRecord::Base
   has_many :comments, through: :resources
   has_many :resources
   has_many :google_docs
+  has_many :videos
   has_many :favorites, through: :resources
   validates :topic, presence: true
 
