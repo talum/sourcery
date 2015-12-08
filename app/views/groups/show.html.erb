@@ -12,7 +12,7 @@
 <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
 
 
-<h4>Some Kind of Graph/Visualization</h4>
+<!-- <h4>Some Kind of Graph/Visualization</h4> -->
 
 <h4>Results</h4>
 <div id="article-results">
@@ -45,15 +45,7 @@
 <%= render 'resources/form', group_id: @group.id %>
 
 <h3>Add a Google Doc</h3>
-<%= form_for (@google_doc || GoogleDoc.new), html: {class: "form-inline"} do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
-    <%= f.hidden_field :group_id, value: @group.id %>
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+<%= render 'google_docs/form', group_id: @group.id %>
 
 
 <h3>Our Docs</h3>
