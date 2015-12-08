@@ -23,11 +23,11 @@
 </div>
 
 <h4>Resources</h4>
-<ul class="resources-container">
+<table class="table table-striped resources-container">
   <% @group.resources.each do |resource| %>
     <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
   <% end %>
-</ul>
+</table>
 
 <h4>Videos</h4>
 <ul>

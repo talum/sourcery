@@ -1,13 +1,16 @@
 <h3>All Groups</h3>
 
-<%= link_to "Add New Group", new_group_path %>
+<%= link_to "Add New Group", new_group_path %><br><br>
 
-<table class="table">
-<% @groups.each do |group| %>
+<table class="table table-striped">
   <tr>
-    <td><%= link_to group.topic, group_path(group) %></td>
-    <td><%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group} %></td>
+    <th class="col-md-4"><strong>Name</strong></th>
+    <th class="col-md-4"><strong>Description</strong></th>
+    <th class="col-md-4"><strong>Options</strong></th>
+    <th></th>
   </tr>
+<% @groups.each do |group| %>
+  <%= render partial: 'groups/group', locals: {group: group, current_user: current_user} %>
 <% end %>
 </table>
 
