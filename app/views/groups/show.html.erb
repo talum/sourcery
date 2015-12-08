@@ -1,94 +1,92 @@
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
 <p><%= render partial: JoinGroupOptions.new(@group, current_user).member?, locals: {group: @group} %></p>
-
-
-<ul class="list-group" id="display-box-options">
-  <li class="list-group-item">
-    Members
-  </li>
-  <li class="list-group-item">
-    Resources
-  </li>
-  <li class="list-group-item">
-    Videos
-  </li>
-  <li class="list-group-item">
-    Google Docs
-  </li>
-</ul>
-
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel primary</h3>
+<div class="row">
+  <div class="col-md-3">
+    <h4>Get Started</h4>
+    <p>Search the New York Times for relevant articles here.</p>
+    <%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
+      <%= text_field_tag(:q) %>
+      <%= hidden_field_tag(:group_id, @group.id) %>
+      <%= submit_tag("Search", class: "btn btn-primary") %>
+    <% end %>
+    <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
+    <h4>Results</h4>
+    <div id="article-results">
+      <!-- list of articles formatted w/ save option, which adds resource to group and user-->
+    </div>
   </div>
-  <div class="panel-body">
-    Panel content
+  <div class="col-md-6">
+    <!-- begin panel -->
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Members</a></li>
+        <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
+        <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="members">
+          <h4>Group Members</h4>
+          <ul>
+            <% @group.users.each do |user| %>
+              <li><%= user.gmail_name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="resources"><h4>Resources</h4>
+          <ul class="resources-container">
+            <% @group.resources.each do |resource| %>
+              <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
+            <% end %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="videos"><h4>Videos</h4>
+          <ul>
+            <% @group.videos.each do |video| %>
+            <li><%= link_to "#{video.title}", "#{video.link}" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="documents">
+          <h3>Our Docs</h3>
+         <table class='table' id='google_doc_table'>
+          <thead>
+            <tr>
+              <th>Document Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @group.google_docs.each do |google_doc| %>
+              <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
+            <% end %>
+          </tbody>
+        </table>
+            </div>
+        </div>
+    </div><!-- end panel -->
   </div>
+  <div class="col-md-3">
+    <ul class="list-group" id="display-box-options">
+      <li class="list-group-item">
+        Members
+      </li>
+      <li class="list-group-item">
+        Resources
+      </li>
+      <li class="list-group-item">
+        Videos
+      </li>
+      <li class="list-group-item">
+        <%= link_to 'New Google Doc', '#new_google_doc_modal', 'data-toggle' => 'modal' %>
+      </li>
+    </ul>
+  </div>  
 </div>
-
-<ul class="list-group" id="display-box-options">
-  <li class="list-group-item">
-    Members
-  </li>
-  <li class="list-group-item">
-    Resources
-  </li>
-  <li class="list-group-item">
-    Videos
-  </li>
-  <li class="list-group-item">
-    Google Docs
-  </li>
-</ul>
-
-
-<h4>Get Started</h4>
-<%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
-  <%= text_field_tag(:q) %>
-  <%= hidden_field_tag(:group_id, @group.id) %>
-  <%= submit_tag("Search", class: "btn btn-primary") %>
-<% end %>
-
-<%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
-
-
-<!-- <h4>Some Kind of Graph/Visualization</h4> -->
-
-<h4>Results</h4>
-<div id="article-results">
-  <!-- list of articles formatted w/ save option, which adds resource to group and user-->
-</div>
-
-<h4>Resources</h4>
-<ul class="resources-container">
-  <% @group.resources.each do |resource| %>
-    <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
-  <% end %>
-</ul>
-
-<h4>Videos</h4>
-<ul>
-  <% @group.videos.each do |video| %>
-  <li><%= link_to "#{video.title}", "#{video.link}" %></li>
-  <% end %>
-</ul>
-
-<h4>Group Members</h4>
-<ul>
-  <% @group.users.each do |user| %>
-    <li><%= user.gmail_name %></li>
-  <% end %>
-</ul>
-
 <h3>Add New Resource</h3>
-
 <%= render 'resources/form', group_id: @group.id %>
-
-<h3>Add a Google Doc</h3>
-
-<%= link_to 'New Google Doc', '#new_google_doc_modal', 'data-toggle' => 'modal' %>
-
 <div class="modal fade" id="new_google_doc_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -106,27 +104,6 @@
     </div>
   </div>
 </div>
-
-
-<h3>Our Docs</h3>
-<table class='table' id='google_doc_table'>
-  <thead>
-    <tr>
-      <th>Document Name</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @group.google_docs.each do |google_doc| %>
-      <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <h3>Add a YouTube Video</h3>
-
 <%= render 'videos/form', group_id: @group.id %>
-
 <p></p>

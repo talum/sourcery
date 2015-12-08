@@ -3,3 +3,4 @@ $(document).ready(function(){
     $('#new_google_doc_modal').modal('hide')
   });
 });
+
