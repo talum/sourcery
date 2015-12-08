@@ -45,13 +45,48 @@
 <%= render 'resources/form', group_id: @group.id %>
 
 <h3>Add a Google Doc</h3>
-<%= render 'google_docs/form', group_id: @group.id %>
+
+<%= link_to 'New Google Doc', '#new_google_doc_modal', 'data-toggle' => 'modal' %>
+
+<div class="modal fade" id="new_google_doc_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new Google Doc</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'google_docs/form', group_id: @group.id, modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <h3>Our Docs</h3>
-<% @group.google_docs.each do |doc| %>
-  <li> <%= link_to doc.title, doc.url %></li>
-<% end %>
+<table class='table' id='google_doc_table'>
+  <thead>
+    <tr>
+      <th>Document Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group.google_docs.each do |google_doc| %>
+      <%# Render table row partial for each person object %>
+      <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <h3>Add a YouTube Video</h3>
 

@@ -16,6 +16,14 @@ class GoogleDocsController < ApplicationController
     google_doc = GoogleDoc.create(doc_params)
     google_doc.url = remote_doc.human_url
     google_doc.save
+
+    respond_to do |format|
+      format.html { redirect_to @google_doc, notice: 'Google Doc was successfully created.' }
+      format.json { render action: 'show', status: :created, location: @google_doc }
+      # added:
+      format.js
+    end
+
     redirect_to :back 
   end
 
