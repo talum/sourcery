@@ -1,11 +1,11 @@
 .salmon{
   background-color: #EB6864;
-  border-top: 1px #fff solid;
   opacity: 0.8;
 }
 
 .logo{
   font-size:5em;
+  color: #555;
 }
 
 .nopadding {
@@ -16,4 +16,12 @@
 .brand-font {
   font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
   font-weight: 600;
+}
+
+.white{
+  color:#fff;
+}
+
+.gray{
+  background-color:#eee;
 }
