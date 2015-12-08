@@ -3,3 +3,17 @@
   border-top: 1px #fff solid;
   opacity: 0.8;
 }
+
+.logo{
+  font-size:5em;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.brand-font {
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-weight: 600;
+}
