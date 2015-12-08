@@ -1,6 +1,7 @@
 class Video < ActiveRecord::Base
 
   belongs_to :group
+  belongs_to :user
   
   YT_LINK_FORMAT = /\A.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/i
 
