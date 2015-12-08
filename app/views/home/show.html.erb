@@ -1,7 +1,54 @@
-<h1>Welcome to Sourcery</h1>
-<% if current_user %>
-  <p> Maybe we can replace this with/ render the user show page? </p>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag("students-collaborating.png", class: "img-responsive center-block") %>
+  </div>
+  <div class="col-md-6">
+    <h1>Welcome to Sourcery</h1>
+  <% if current_user %>
+    <p>Go forth and share.</p>
+  <% else %>
+    <p> Please login to view, create and join groups and to start sharing resources!</p>
+  <% end %>
+  </div>
+</div>
 
-<% else %>
-  <p> Please login to view, create and join groups and to start sharing resources!</p>
-<% end %>
+<div class="row salmon">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-9">
+    <h2>About Sourcery</h2>
+    <p>Sourcery lets you collaborate in real time with your classmates on a research project.</p>
+    <p>Get started today!</p>
+  </div>
+</div>
+
+<div class="row salmon">
+  <h2>More text</h2>
+  <p>Sourcery lets you collaborate in real time with your classmates on a research project.</p>
+  <p>Get started today!</p>
+</div>
+
+<div class="row">
+  <h3>About the Team</h3>
+  <div class="col-md-3">
+    <%= image_tag("meredithedwards.jpg", size: "140", class: "img-circle") %>
+    <h4>Meredith Edwards</h4>
+    <p>BIO</p>
+  </div>
+  <div class="col-md-3">
+    <%= image_tag("madelineford.jpg", size: "140", class: "img-circle") %>
+    <h4>Madeline Ford</h4>
+    <p>BIO</p>
+  </div>
+  <div class="col-md-3">
+    <%= image_tag("tracylum.jpg", size: "140", class: "img-circle") %>
+    <h4>Tracy Lum</h4>
+    <p>Bio</p>
+  </div>
+  <div class="col-md-3" id="jim-bio-js">
+    <%= image_tag("jimrectenwald.jpg", size: "140", class: "img-circle", id: "jim-pic-js") %>
+    <h4>Jim Rectenwald</h4>
+    <p>Bio</p>
+  </div>
+</div>
+

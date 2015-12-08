@@ -1,4 +1,6 @@
 <small><%= time_ago_in_words(a.created_at) %> ago</small>
 <br>
-<%= image_tag(a.owner.image, size: "30", class: "img-circle") %>
-<strong><%= a.owner ? a.owner.gmail_name : 'Guest' %></strong>
+<% if a.owner %>
+  <%= image_tag(a.owner.image, size: "30", class: "img-circle") %>
+  <strong><%= link_to a.owner.gmail_name, user_path(a.owner) %></strong>
+<% end %>

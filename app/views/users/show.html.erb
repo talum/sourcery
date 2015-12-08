@@ -1,19 +1,56 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h3>User Profile</h3>
-    <p>Name: <%= current_user.gmail_name %></p>
-    <%= image_tag(current_user.image, size: "140", class: "img-circle") %>
-    <p>Groups:<br>
+    <p><strong>Name:</strong> <%= @user.gmail_name %></p>
+    <p><strong>Email:</strong> <%= link_to @user.email, "mailto:#{@user.email}" %></p>
+    <br>
+    <%= image_tag(@user.image, size: "140", class: "img-circle") %>
+    <br><br>
+    <p><strong>Groups:</strong><br>
       <ul>
-        <% current_user.groups.each do |group| %>
+        <% @user.groups.each do |group| %>
           <li><%= link_to group.topic, group_path(group) %></li>
         <% end %>
       </ul>
     </p>
   </div>
-  <div class="col-md-4">
-    <%= render 'shared/activities' %>
+  <div class="col-md-5">
+    <h3>User Stats</h3>
+    <table class="table">
+      <tr>
+        <td><i class="fa fa-magic"></i></td>
+        <td>Favorites </td>
+        <td><%= @user.favorites.count %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-comments"></i></td>
+        <td>Comments </td>
+        <td><%= @user.comments.count %></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-bookmark"></i></td>
+        <td>Resources</td>
+        <td><%= @user.resources.count %></td>
+      </tr>
+
+      <% if @user.student %>
+      <tr>
+        <td><i class="fa fa-pencil-square-o"></i></td>
+        <td>Average Word Count </td>
+        <td><%= @user.comments.length > 0 ? @user.student.average_comment_length : 0 %></td>
+      </tr>      
+      <% end %>
+      <tr>
+        <td><i class="fa fa-star-half-o"></i></td>
+        <td>SOURCERY Score </td>
+        <td><!-- some kind of engagement metric --></td>
+      </tr>      
+      
+    </table>
   </div>
   <div class="col-md-4">
+    <% if current_user == @user %>
+    <%= render 'shared/activities', {current_user: current_user}%>
+    <% end %>
   </div>
 </div>

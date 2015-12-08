@@ -26,6 +26,13 @@
   <% end %>
 </ul>
 
+<h4>Videos</h4>
+<ul>
+  <% @group.videos.each do |video| %>
+  <li><%= link_to "#{video.title}", "#{video.link}" %></li>
+  <% end %>
+</ul>
+
 <h4>Group Members</h4>
 <ul>
   <% @group.users.each do |user| %>
@@ -53,3 +60,9 @@
 <% @group.google_docs.each do |doc| %>
   <li> <%= link_to doc.title, doc.url %></li>
 <% end %>
+
+<h3>Add a YouTube Video</h3>
+
+<%= render 'videos/form', group_id: @group.id %>
+
+<p></p>
