@@ -1,0 +1,9 @@
+<%= form_for (@google_doc || GoogleDoc.new), html: {class: "form-inline"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
