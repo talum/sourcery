@@ -1,3 +1,9 @@
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
 <p><%= render partial: JoinGroupOptions.new(@group, current_user).member?, locals: {group: @group} %></p>
@@ -66,3 +72,11 @@
 <%= render 'videos/form', group_id: @group.id %>
 
 <p></p>
+
+<h3>Invite a User to this Group</h3>
+<%= form_for @notification do |f| %>
+  <%= f.collection_select :user_id, @invite_list, :id, :gmail_name %>
+  <%= f.hidden_field :group_id, value: @group.id %>
+  <%= f.hidden_field :sender_name, value: current_user.gmail_name %>
+  <%= f.submit "Invite" %>
+<% end %>

@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_many :videos
   has_one :student
   has_one :teacher
+  has_many :notifications
 
  
   def self.from_omniauth(auth)

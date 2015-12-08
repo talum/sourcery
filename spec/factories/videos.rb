@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id           :integer          not null, primary key
+#  link         :string
+#  title        :string
+#  published_at :datetime
+#  likes        :integer
+#  dislikes     :integer
+#  uid          :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  group_id     :integer
+#  user_id      :integer
+#
+
 FactoryGirl.define do
   factory :video do
     link "MyString"

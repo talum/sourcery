@@ -50,6 +50,12 @@
   </div>
   <div class="col-md-4">
     <% if current_user == @user %>
+    <h3>Notifications</h3>
+    <ul>
+    <% current_user.notifications.each do |notification|  %>
+      <li><%= notification.sender_name %> has invited you to <%= link_to notification.group.topic, group_path(notification.group) %></li>
+    <% end %>
+    </ul>
     <%= render 'shared/activities', {current_user: current_user}%>
     <% end %>
   </div>

@@ -5,7 +5,7 @@
 #  id       :integer          not null, primary key
 #  title    :string
 #  url      :string
-#  type     :string
+#  doc_type :string
 #  group_id :integer
 #
 

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index]
   resources :teachers, only: [:show]
   resources :videos, only: [:index, :new, :create]
+  resources :notifications, only: [:create, :index, :destroy]
  
   root to: "home#show"
 

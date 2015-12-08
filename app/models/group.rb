@@ -22,6 +22,7 @@ class Group < ActiveRecord::Base
   has_many :google_docs
   has_many :videos
   has_many :favorites, through: :resources
+  has_many :notifications
   validates :topic, presence: true
 
   def self.most_resources
