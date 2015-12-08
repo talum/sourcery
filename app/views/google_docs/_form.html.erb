@@ -1,7 +1,7 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
-<%= form_for (@google_doc || GoogleDoc.new), remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'google_doc'} do |f| %>
-  <div class="form-group" id="new_google_doc">
+<%= form_for (@google_doc || GoogleDoc.new), remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'google_doc', id: "new_google_doc"} do |f| %>
+  <div class="form-group" id="new-google-doc-body">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
     <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>

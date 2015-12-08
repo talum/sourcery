@@ -4,8 +4,6 @@ class GoogleDocsController < ApplicationController
     @group = Group.find(doc_params[:group_id])
     group_name = @group.topic
     session = GoogleDrive.login_with_oauth(current_user.oauth_token)
-    # folder = session.collection_by_title(group_name)
-    # binding.pry
     folder = session.root_collection.create_subcollection(group_name)
     
     if doc_params[:doc_type] == "Document"
@@ -17,10 +15,8 @@ class GoogleDocsController < ApplicationController
     @google_doc = GoogleDoc.create(doc_params)
     @google_doc.url = remote_doc.human_url
     @google_doc.save
-
-    respond_to do |format|
-      format.js { render action: '../groups/show', status: :created, location: @group}
-    end
+    google_doc_item = render_to_string(partial: 'google_docs/table_row', locals: {google_doc: @google_doc})
+    render json: {message: "Google Doc saved!", google_doc_item: google_doc_item}
   end
 
   private
