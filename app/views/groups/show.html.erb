@@ -72,15 +72,11 @@
   <thead>
     <tr>
       <th>Document Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @group.google_docs.each do |google_doc| %>
-      <%# Render table row partial for each person object %>
       <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
     <% end %>
   </tbody>

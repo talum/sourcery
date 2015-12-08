@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   $(document).bind('ajaxError', 'form#new_google_doc', function(event, jqxhr, settings, exception){
 
     // note: jqxhr.responseJSON undefined, parsing responseText instead
@@ -10,9 +9,9 @@ $(document).ready(function(){
 });
 
 (function($) {
-
   $.fn.modal_success = function(){
     // close modal
+    debugger
     this.modal('hide');
 
     // clear form input elements
