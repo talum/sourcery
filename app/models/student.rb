@@ -39,7 +39,11 @@ class Student < ActiveRecord::Base
 
   #return the student object who has commented the most
   def self.with_most_comments
-    {student: Student.find(self.array_of_num_comments_by_student.first.first), num_comments: self.array_of_num_comments_by_student.first.last}
+    if self.array_of_num_comments_by_student.length > 0 && self.array_of_num_comments_by_student.length > 0
+      {student: Student.find(self.array_of_num_comments_by_student.first.first), num_comments: self.array_of_num_comments_by_student.first.last}
+    else
+      []
+    end
   end
 
   def average_comment_length
@@ -76,7 +80,11 @@ class Student < ActiveRecord::Base
 
   #Returns the student object who has made the most resources
   def self.with_most_resources
+    if self.array_of_num_of_resources_by_student.length > 0 && self.array_of_num_of_resources_by_student.length > 0
     {student: Student.find(self.array_of_num_of_resources_by_student.first.first), num_resources: self.array_of_num_of_resources_by_student.first.last}
+    else
+      []
+    end
   end
 
 end
