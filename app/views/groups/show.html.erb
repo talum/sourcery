@@ -71,7 +71,7 @@
   <div class="col-md-3">
     <ul class="list-group" id="display-box-options">
       <li class="list-group-item">
-        Add New Resource
+        <%= link_to 'New Resource', '#new_resource_modal', 'data-toggle' => 'modal' %>
       </li>
       <li class="list-group-item">
         <%= link_to 'New Video', '#new_video_modal', 'data-toggle' => 'modal' %>
@@ -82,8 +82,6 @@
     </ul>
   </div>  
 </div>
-<h3>Add New Resource</h3>
-<%= render 'resources/form', group_id: @group.id %>
 
 <div class="modal fade" id="new_google_doc_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -114,6 +112,24 @@
       <div class="modal-body">
         <%# Render the new person form (passing modal => true to enable remote => true) %>
         <%= render 'videos/form', group_id: @group.id, modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new_resource_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Link to New Resource</h4>
+      </div>
+      <div class="modal-body">
+        <%# Render the new person form (passing modal => true to enable remote => true) %>
+        <%= render 'resources/form', group_id: @group.id, modal: true %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

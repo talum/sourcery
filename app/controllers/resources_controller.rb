@@ -23,7 +23,9 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     @group = Group.find(resource_params[:group_id])
     @resource.save!
-    redirect_to @resource
+    respond_to do |format|
+      format.js { render action: '../groups/show', status: :created, location: @resource}
+    end
     rescue ActiveRecord::RecordInvalid
       redirect_to @group, :flash => { :error => @resource.errors.full_messages}
   end
