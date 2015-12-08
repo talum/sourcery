@@ -48,7 +48,7 @@ class Student < ActiveRecord::Base
       array_of_words = comment.content.split(" ")
       counter += array_of_words.length
     end 
-    counter / self.comments.length
+    (counter / self.comments.length) if self.comments.length > 0
   end
 
   ###########

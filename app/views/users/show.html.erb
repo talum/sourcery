@@ -37,7 +37,7 @@
       <tr>
         <td><i class="fa fa-pencil-square-o"></i></td>
         <td>Average Word Count </td>
-        <td><%= @user.student.average_comment_length %></td>
+        <td><%= @user.comments.length > 0 ? @user.student.average_comment_length : 0 %></td>
       </tr>      
       <% end %>
       <tr>
