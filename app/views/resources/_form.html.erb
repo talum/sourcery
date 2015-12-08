@@ -1,6 +1,6 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
-<%= form_for @resource, remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'resource'} do |f| %>
+<%= form_for @resource, remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'resource', id: "new_resource_form"} do |f| %>
   <% if flash[:error] %>
     <div class="notice">
       <% flash[:error].each do |error| %>
@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <div class="form-group" id="new_resource">
+  <div class="form-group" id="new_resource_body">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
     <%= f.label :link %>

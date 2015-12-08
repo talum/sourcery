@@ -1,31 +1,41 @@
 <div class="row">
   <div class="col-md-6">
     <h4> Top Commenter: <h4>
-      <strong> Name: </strong> <%= @top_commenter[:student].user.gmail_name %><br>
-      <strong> Number of Comments: </strong> <%= @top_commenter[:num_comments] %><br>
-      <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].average_comment_length %><br>
+      <% if @student_comments.length > 0 %>
+        <strong> Name: </strong> <%= @top_commenter[:student].user.gmail_name %><br>
+        <strong> Number of Comments: </strong> <%= @top_commenter[:num_comments] %><br>
+        <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].average_comment_length %><br>
 
-    <br>
+      <br>
 
-    <div id="student-comment-graph">
-      <p> Number of comments by student:</p>
-      <br><br>
-    </div>
+    
+      <div id="student-comment-graph">
+        <p> Number of comments by student:</p>
+        <br><br>
+      </div>
+    <% else %>
+    <p> No students with comments. </p>
+    <% end %>
 
   </div>
 
 
   <div class="col-md-6">
-    <h4> Top Resource Contributor: <h4>
-      <strong> Name: </strong> <%= @top_contributor[:student].user.gmail_name %><br>
-      <strong> Number of Resources Contributed: </strong> <%= @top_contributor[:num_resources] %><br>
+      <h4> Top Resource Contributor: <h4>
+    <% if @student_resources.length > 0 %>
+        <strong> Name: </strong> <%= @top_contributor[:student].user.gmail_name %><br>
+        <strong> Number of Resources Contributed: </strong> <%= @top_contributor[:num_resources] %><br>
+        <br>
       <br>
-    <br>
-
-    <div id="student-resource-graph">
-      <p>Number of resources contributed by student:</p>
-      <br><br>
-    </div>
+  
+    
+      <div id="student-resource-graph">
+        <p>Number of resources contributed by student:</p>
+        <br><br>
+      </div>
+    <% else %>
+    <p> No students have posted resources. </p>
+    <% end %>
 
   </div>
 

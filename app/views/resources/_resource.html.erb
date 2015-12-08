@@ -1,7 +1,11 @@
-<li><%= link_to resource.title, resource %>:  <%= link_to "#{resource.link}", resource.link %>
-   <ul><%= resource.likes_message(current_user) %></ul>
-   <%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %>
-   <% if resource.user_id == current_user.id %>
+<tr>
+  <td class="col-md-4"><%= link_to resource.title, resource %></td>
+  <td class="col-md-1"><%= link_to "View", resource.link, target: "_blank" %></td>
+  <td class="col-md-4"><%= resource.likes_message(current_user) %></td>
+  <td class="col-md-2"><%= render partial: "/resources/#{FavoriteToggle.new(resource, current_user).already_favorited?}", locals: {resource: resource} %></td>
+   <td class="col-md-1">
+    <% if resource.user_id == current_user.id %>
      <%= link_to("X", resource_path(resource), method: :delete, class: "destroy-resource-js") %>
-   <% end %>
-</li>
+    <% end %>
+    </td>
+</tr>

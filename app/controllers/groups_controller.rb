@@ -6,6 +6,9 @@ class GroupsController < ApplicationController
     @resource = Resource.new
     @google_doc = GoogleDoc.new
     @video = Video.new
+    @notification = Notification.new
+    @invite_ids = @group.invite_ids(current_user)
+    @invite_list = User.where.not(id: @invite_ids)
   end
 
   def index

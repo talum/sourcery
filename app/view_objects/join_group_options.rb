@@ -8,9 +8,9 @@ class JoinGroupOptions
 
   def member?
     if group.users.include?(current_user)
-      'leave_group_options'
+      'groups/leave_group_options'
     else
-      'join_group_options'
+      'groups/join_group_options'
     end
   end
 
