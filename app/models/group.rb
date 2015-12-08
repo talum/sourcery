@@ -51,6 +51,11 @@ class Group < ActiveRecord::Base
     end  
   end 
 
+  def invite_ids(current_user)
+    array = self.user_ids
+    array << current_user.id
+  end
+
 
 
 
