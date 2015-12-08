@@ -1,19 +1,28 @@
 <div class="row">
   <div class="col-md-4">
     <h3>User Profile</h3>
-    <p>Name: <%= current_user.gmail_name %></p>
-    <%= image_tag(current_user.image, size: "140", class: "img-circle") %>
+    <p>Name: <%= @user.gmail_name %></p>
+    <%= image_tag(@user.image, size: "140", class: "img-circle") %>
     <p>Groups:<br>
       <ul>
-        <% current_user.groups.each do |group| %>
+        <% @user.groups.each do |group| %>
           <li><%= link_to group.topic, group_path(group) %></li>
         <% end %>
       </ul>
     </p>
   </div>
   <div class="col-md-4">
-    <%= render 'shared/activities' %>
+    <h3>Something here</h3>
+    Personal Stats?
+    # favorites
+    # avg word count 
+    # resources 
+    # groups 
+    # Engagement Metric 
   </div>
   <div class="col-md-4">
+    <% if current_user == @user %>
+    <%= render 'shared/activities', {current_user: current_user}%>
+    <% end %>
   </div>
 </div>

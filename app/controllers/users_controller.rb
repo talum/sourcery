@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @groups = current_user.groups
+    @user = User.find(params[:id])
     load_activities
   end
 
