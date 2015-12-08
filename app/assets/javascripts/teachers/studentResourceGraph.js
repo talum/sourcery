@@ -12,12 +12,12 @@ $(function(){
 
   function buildResourceChart (arrayOfStudentHashes){    
     var barWidth = 35;
-    var margin = {top: 20, right: 30, bottom: 200, left: 60} 
+    var margin = {top: 50, right: 30, bottom: 200, left: 60} 
     var chartHeight = 600 - margin.top - margin.bottom 
     var chartWidth = 600 - margin.left - margin.right
     var chartScale = d3.scale.linear()
                               .domain([0, arrayOfStudentHashes[0].resource_count])
-                              .range([0, chartHeight]);
+                              .range([0, chartHeight-30]);
     var chart = d3.select('#student-resource-graph')
                   .append("svg")
                   .attr("width", chartWidth + margin.left + margin.right)
@@ -27,19 +27,25 @@ $(function(){
       return (object.student)
     })
 
-    var x_domain = d3.extent(chartWidth)
-
-
     var x = d3.scale.ordinal()
               .domain(names)
               .rangeBands([0, (chartWidth)])
+
 
 
     var xAxis = d3.svg.axis()
                   .scale(x)
                   .orient("bottom")
                   .tickFormat(d3.names)
-                  // .ticks(arrayOfStudentHashes.length)
+
+    var y = d3.scale.linear()
+              .domain([arrayOfStudentHashes[0].resource_count, 0])
+              .range([0, (chartHeight - 30)])  
+
+    var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .orient("left")
+                  .tickFormat(d3.format("d"))     
 
     var bar = chart.selectAll("g")
                    .data(arrayOfStudentHashes)
@@ -67,6 +73,11 @@ $(function(){
       .attr("transform", function(d, i) {
         return "transform", "translate(" + (((-270/arrayOfStudentHashes.length) - (i * (chartWidth) / arrayOfStudentHashes.length)) + (i * (barWidth+2))) + ",10)rotate(-65)"
       });
+
+      chart.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + margin.left + ",30)")
+      .call(yAxis)
 
 
     bar.append("text")
