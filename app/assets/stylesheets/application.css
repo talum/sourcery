@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require journal
+ *= require groups/show
  *= require_self
  *= require custom
  *= require fontawesome
