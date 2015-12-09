@@ -23,7 +23,10 @@
     <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
 
     <div id="article-results">
-      <!-- list of articles formatted w/ save option, which adds resource to group and user-->
+      <table class="table">
+        <tbody>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="col-md-6">
@@ -63,7 +66,7 @@
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="documents">
-          <h3>Our Docs</h3>
+          <h4>Our Docs</h4>
          <table class='table' id='google_doc_table'>
           <thead>
             <tr>
@@ -89,8 +92,8 @@
         <br>
         <%= f.submit "Invite", class: "btn btn-primary"%>
       <% end %>
-      <p></p>
-      
+      <p></p><br>
+
     <h4>Add New Resources</h4>
     <ul class="list-group" id="display-box-options">
       <li class="list-group-item">
@@ -114,7 +117,6 @@
         <h4 class="modal-title" id="myModalLabel">Create new Google Doc</h4>
       </div>
       <div class="modal-body">
-        <%# Render the new person form (passing modal => true to enable remote => true) %>
         <%= render 'google_docs/form', group_id: @group.id, modal: true %>
       </div>
       <div class="modal-footer">
@@ -133,7 +135,6 @@
         <h4 class="modal-title" id="myModalLabel">Link to YouTube Video</h4>
       </div>
       <div class="modal-body">
-        <%# Render the new person form (passing modal => true to enable remote => true) %>
         <%= render 'videos/form', group_id: @group.id, modal: true %>
       </div>
       <div class="modal-footer">
@@ -151,7 +152,6 @@
         <h4 class="modal-title" id="myModalLabel">Link to New Resource</h4>
       </div>
       <div class="modal-body">
-        <%# Render the new person form (passing modal => true to enable remote => true) %>
         <%= render 'resources/form', group_id: @group.id, modal: true %>
       </div>
       <div class="modal-footer">
