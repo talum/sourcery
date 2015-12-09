@@ -1,0 +1,11 @@
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<%= form_for (@google_doc || GoogleDoc.new), remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'google_doc', id: "new_google_doc"} do |f| %>
+  <div class="form-group" id="new_google_doc_body">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
+    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

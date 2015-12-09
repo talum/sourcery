@@ -6,11 +6,9 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    if @video.save
-      redirect_to videos_path(@videos)
-    else
-      render partial: 'videos/form'
-    end
+    @video.save
+    video_item = render_to_string(partial: 'videos/video', locals: {video: @video})
+    render json: {video_item: video_item}
   end
 
   private

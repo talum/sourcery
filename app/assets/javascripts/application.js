@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require newComment
 //= require homeShow
+//= require groups/show
 //= require teachers/studentCommentGraph
 //= require teachers/studentResourceGraph
 //= require resources/toggle_show_hide_resource
