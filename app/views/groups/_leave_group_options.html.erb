@@ -1,1 +1,1 @@
-<%= button_to "Leave Group", {controller: "users", action: "leave_group", group_id: group.id}, {method: :delete, class: "btn btn-primary btn-xs"} %>
+<%= button_to "Leave Group", user_group_path(user_group), method: :delete, class: "btn btn-primary btn-xs" %>

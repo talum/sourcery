@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     @notification = Notification.new
     @invite_ids = @group.invite_ids(current_user)
     @invite_list = User.where(id: @invite_ids)
+    @user_group = UserGroup.find_by(group_id: @group.id, user_id: current_user.id)
   end
 
   def index

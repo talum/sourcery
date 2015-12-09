@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
-  post 'users/join_group' => 'users#join_group', as: 'join_group'
   get 'users/:id/groups' => 'users#groups', as: 'user_groups'
-  delete 'users/leave_group' => 'users#leave_group', as: 'leave_group'
   resources :users, only: [:show, :index]
   resources :resources
   resources :groups
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
   resources :videos, only: [:index, :new, :create]
   resources :notifications, only: [:create, :index, :destroy]
   resources :friendships, only: [:create, :destroy]
+  resources :user_groups, only: [:create, :destroy]
  
   root to: "home#show"
 
