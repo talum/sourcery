@@ -9,6 +9,11 @@ class GroupsController < ApplicationController
     @notification = Notification.new
     @invite_ids = @group.invite_ids(current_user)
     @invite_list = User.where.not(id: @invite_ids)
+    @comments_over_time = @group.comments_over_time
+    respond_to do |format| 
+      format.html
+      format.json {render json: {comments_over_time: @comments_over_time}}
+    end
   end
 
   def index
