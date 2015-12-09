@@ -24,6 +24,17 @@
         <% end %>
       </ul>
     </p>
+    <p><%= link_to "Find more friends", users_path %></p>
+
+    <p> <strong> Following you: </strong><br>
+      <ul>
+        <% @user.inverse_friendships.each do |friendship| %>
+          <li>
+            <%= link_to friendship.user.gmail_name, friendship.user %>
+          </li>
+        <% end %>
+      </ul>
+    </p>
 
   </div>
   <div class="col-md-5">
