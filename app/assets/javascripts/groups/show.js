@@ -79,7 +79,6 @@ function buildCommentsOverTimeGraph(commentsOverTime){
       .scale(y)
       .orient("left");
 
-
   var svg = d3.select("#comments-over-time.tab-pane").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
