@@ -10,15 +10,18 @@
 
 <div class="row">
   <div class="col-md-3">
-    <h4>Get Started</h4>
-    <p>Search the New York Times for relevant articles here.</p>
+    <h3>Get Started</h3>
+    <p>Search the <em>New York Times</em> for relevant articles here.</p>
     <%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
-      <%= text_field_tag(:q) %>
-      <%= hidden_field_tag(:group_id, @group.id) %>
-      <%= submit_tag("Search", class: "btn btn-primary") %>
+      <div class="input-group">
+        <%= hidden_field_tag(:group_id, @group.id) %>
+        <%= text_field_tag 'q', '', class: 'form-control' %>
+        <span class="input-group-btn" id="basic-addon2"><%= submit_tag("Search", class: "btn btn-primary") %></span>
+      </div>
     <% end %>
-    <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
     <h4>Results</h4>
+    <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
+
     <div id="article-results">
       <!-- list of articles formatted w/ save option, which adds resource to group and user-->
     </div>
@@ -78,14 +81,17 @@
     </div><!-- end panel -->
   </div>
   <div class="col-md-3">
-    <h3>Invite a User to this Group</h3>
+    <h4>Invite a User to this Group</h4>
       <%= form_for @notification do |f| %>
-        <%= f.collection_select :user_id, @invite_list, :id, :gmail_name %>
+        <%= f.collection_select :user_id, @invite_list, :id, :gmail_name, {:prompt => "Select a user",}, {class: "form-control"} %>
         <%= f.hidden_field :group_id, value: @group.id %>
         <%= f.hidden_field :sender_name, value: current_user.gmail_name %>
-        <%= f.submit "Invite" %>
+        <br>
+        <%= f.submit "Invite", class: "btn btn-primary"%>
       <% end %>
       <p></p>
+      
+    <h4>Add New Resources</h4>
     <ul class="list-group" id="display-box-options">
       <li class="list-group-item">
         <%= link_to 'New Resource', '#new_resource_modal', 'data-toggle' => 'modal' %>
