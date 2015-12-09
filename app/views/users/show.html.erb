@@ -15,25 +15,25 @@
     </p>
 
     <p> <strong> Friends: </strong><br>
-      <ul>
+      <table>
         <% @user.friendships.each do |friendship| %>
-          <li>
-            <%= friendship.friend.gmail_name %>
-            <%= link_to "Remove", friendship, method: :delete %>
-          </li>
+          <tr>
+            <td class="col-md-8"><%= link_to friendship.friend.gmail_name, friendship.friend %></td>
+            <td><%= link_to "X", friendship, method: :delete, class: "btn btn-xs btn-default" %></td>
+          </tr>
         <% end %>
-      </ul>
+      </table>
     </p>
     <p><%= link_to "Find more friends", users_path %></p>
 
     <p> <strong> Following you: </strong><br>
-      <ul>
+      <table>
         <% @user.inverse_friendships.each do |friendship| %>
-          <li>
-            <%= link_to friendship.user.gmail_name, friendship.user %>
-          </li>
+          <tr>
+            <td class="col-md-8"><%= link_to friendship.user.gmail_name, friendship.user %></td>
+          </tr>
         <% end %>
-      </ul>
+      </table>
     </p>
 
   </div>

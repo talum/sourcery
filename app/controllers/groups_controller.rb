@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     @video = Video.new
     @notification = Notification.new
     @invite_ids = @group.invite_ids(current_user)
-    @invite_list = User.where.not(id: @invite_ids)
+    @invite_list = User.where(id: @invite_ids)
   end
 
   def index
