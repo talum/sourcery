@@ -1,7 +1,9 @@
-<%= form_tag('/choice')%>
- <p>Are you a...</p><br>
- <%= label_tag 'choice', "Teacher"%>
- <%= radio_button_tag 'choice', 'Teacher' %><br>
- <%= label_tag 'choice', "Student"%>
- <%= radio_button_tag 'choice', 'Student' %><br>
- <%= submit_tag%>
+<div class="row">
+  <%= form_tag('/choice')%>
+     <p>Are you a...</p><br>
+     <%= label_tag 'choice', "Teacher"%>
+     <%= radio_button_tag 'choice', 'Teacher' %><br>
+     <%= label_tag 'choice', "Student"%>
+     <%= radio_button_tag 'choice', 'Student' %><br>
+     <%= submit_tag "Submit", class: 'btn btn-info' %>
+</div>

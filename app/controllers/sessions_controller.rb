@@ -16,13 +16,12 @@ class SessionsController < ApplicationController
     else
       Student.create(user_id: current_user.id )
     end
+    current_user.sign_in_count += 1
+    current_user.save
     redirect_to user_path(current_user)
   end
 
   def destroy
-    @user = current_user
-    @user.sign_in_count += 1
-    @user.save
     session[:user_id] = nil
     redirect_to root_path
   end
