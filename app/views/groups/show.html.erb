@@ -1,8 +1,10 @@
 <% if flash[:notice] %>
-  <div class="notice">
+  <div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">X</button>
     <%= flash[:notice] %>
   </div>
 <% end %>
+
 
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
