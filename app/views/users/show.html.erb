@@ -13,6 +13,18 @@
         <% end %>
       </ul>
     </p>
+
+    <p> <strong> Friends: </strong><br>
+      <ul>
+        <% @user.friendships.each do |friendship| %>
+          <li>
+            <%= friendship.friend.gmail_name %>
+            <%= link_to "Remove", friendship, method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </p>
+
   </div>
   <div class="col-md-5">
     <h3>User Stats</h3>

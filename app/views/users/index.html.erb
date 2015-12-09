@@ -1,0 +1,9 @@
+<h1> Users: </h1>
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <%= user.gmail_name %>
+        <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %>
+      </li>
+    <% end %>
+  </ul>
