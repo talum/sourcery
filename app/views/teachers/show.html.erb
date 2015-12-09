@@ -1,42 +1,26 @@
+<center><h3>Analytics</h3></center><br><br>
 <div class="row">
-  <div class="col-md-6">
-    <h4> Top Commenter: <h4>
-      <% if @student_comments.length > 0 %>
-        <strong> Name: </strong> <%= @top_commenter[:student].user.gmail_name %><br>
-        <strong> Number of Comments: </strong> <%= @top_commenter[:num_comments] %><br>
-        <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].average_comment_length %><br>
-
-      <br>
-
-    
-      <div id="student-comment-graph">
-        <p> Number of comments by student:</p>
-        <br><br>
+  <div class="col-md-4"></div>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#top-commenter" aria-expanded="false" aria-controls="collapseExample">
+        Top Commenters
+      </button>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#top-contributor" aria-expanded="false" aria-controls="collapseExample">
+        Top Resource Contributors
+      </button>
+</div>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="collapse" id="top-commenter">
+      <div class="well">
+        <%= render partial: 'teachers/top_commenter', locals: {top_commenter: @top_commenter} %>
       </div>
-    <% else %>
-    <p> No students with comments. </p>
-    <% end %>
-
-  </div>
-
-
-  <div class="col-md-6">
-      <h4> Top Resource Contributor: <h4>
-    <% if @student_resources.length > 0 %>
-        <strong> Name: </strong> <%= @top_contributor[:student].user.gmail_name %><br>
-        <strong> Number of Resources Contributed: </strong> <%= @top_contributor[:num_resources] %><br>
-        <br>
-      <br>
-  
-    
-      <div id="student-resource-graph">
-        <p>Number of resources contributed by student:</p>
-        <br><br>
+    </div>
+    <div class="collapse" id="top-contributor">
+      <div class="well">
+        <%= render partial: 'teachers/top_contributor', locals: {top_contributor: @top_contributor} %>  
       </div>
-    <% else %>
-    <p> No students have posted resources. </p>
-    <% end %>
-
+    </div>
   </div>
-
-</div
+  <div class="col-md-2"></div>
+</div>

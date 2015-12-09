@@ -13,6 +13,29 @@
         <% end %>
       </ul>
     </p>
+
+    <p> <strong> Friends: </strong><br>
+      <table>
+        <% @user.friendships.each do |friendship| %>
+          <tr>
+            <td class="col-md-8"><%= link_to friendship.friend.gmail_name, friendship.friend %></td>
+            <td><%= link_to "X", friendship, method: :delete, class: "btn btn-xs btn-default" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </p>
+    <p><%= link_to "Find more friends", users_path %></p>
+
+    <p> <strong> Following you: </strong><br>
+      <table>
+        <% @user.inverse_friendships.each do |friendship| %>
+          <tr>
+            <td class="col-md-8"><%= link_to friendship.user.gmail_name, friendship.user %></td>
+          </tr>
+        <% end %>
+      </table>
+    </p>
+
   </div>
   <div class="col-md-5">
     <h3>User Stats</h3>

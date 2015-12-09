@@ -1,8 +1,10 @@
 <% if flash[:notice] %>
-  <div class="notice">
+  <div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">X</button>
     <%= flash[:notice] %>
   </div>
 <% end %>
+
 
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
@@ -38,6 +40,7 @@
         <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
         <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
         <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+        <li role="presentation"><a href="#comments-over-time" aria-controls="documents" role="tab" data-toggle="tab">Comments/Time</a></li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -67,19 +70,22 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="documents">
           <h4>Our Docs</h4>
-         <table class='table' id='google_doc_table'>
-          <thead>
-            <tr>
-              <th>Document Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @group.google_docs.each do |google_doc| %>
-              <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
-            <% end %>
-          </tbody>
-        </table>
-            </div>
+           <table class='table' id='google_doc_table'>
+            <thead>
+              <tr>
+                <th>Document Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @group.google_docs.each do |google_doc| %>
+                <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="comments-over-time">
+        
+        </div>
         </div>
     </div><!-- end panel -->
   </div>

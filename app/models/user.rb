@@ -30,6 +30,11 @@ class User < ActiveRecord::Base
   has_one :teacher
   has_many :notifications
 
+  has_many :friendships
+  has_many :friends, :through => :friendships, :class_name => "User"
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, through: :inverse_friendships, :source => :user
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.provider = auth.provider
@@ -78,5 +83,8 @@ class User < ActiveRecord::Base
     UserGroup.where(group_id: self.group_ids).pluck(:user_id).uniq
   end
 
+  def friends_and_self_ids
+    self.friend_ids.push(self.id)
+  end
 
 end

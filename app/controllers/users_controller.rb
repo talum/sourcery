@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     load_activities
   end
 
+  def index
+    @users = User.where.not(id: current_user.friends_and_self_ids)
+  end
+
   def groups
     @groups = current_user.groups
     render 'groups'

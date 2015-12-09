@@ -14,6 +14,7 @@
     <%= f.text_field :title, class: "form-control" %>
     <%= f.label :link %>
     <%= f.text_field :link, class: "form-control" %>
+    <p class="help-block">Links must start with 'http://' or 'https://'</p>
     <%= f.hidden_field :group_id, value: group_id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <p></p>
