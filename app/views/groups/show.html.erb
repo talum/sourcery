@@ -8,72 +8,160 @@
 <p>Description: <%= @group.description %></p>
 <p><%= render partial: JoinGroupOptions.new(@group, current_user).member?, locals: {group: @group} %></p>
 
-<h4>Get Started</h4>
-<%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
-  <%= text_field_tag(:q) %>
-  <%= hidden_field_tag(:group_id, @group.id) %>
-  <%= submit_tag("Search", class: "btn btn-primary") %>
-<% end %>
+<div class="row">
+  <div class="col-md-3">
+    <h3>Get Started</h3>
+    <p>Search the <em>New York Times</em> for relevant articles here.</p>
+    <%= form_tag("/query", method: "get", remote: true, id: "article-search") do %>
+      <div class="input-group">
+        <%= hidden_field_tag(:group_id, @group.id) %>
+        <%= text_field_tag 'q', '', class: 'form-control' %>
+        <span class="input-group-btn" id="basic-addon2"><%= submit_tag("Search", class: "btn btn-primary") %></span>
+      </div>
+    <% end %>
+    <h4>Results</h4>
+    <%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
 
-<%= link_to "Clear", "#", id:"clear-search-results-button", class: "btn btn-primary" %>
+    <div id="article-results">
+      <table class="table">
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- begin panel -->
+    <div>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#members" aria-controls="members" role="tab" data-toggle="tab">Members</a></li>
+        <li role="presentation"><a href="#resources" aria-controls="resources" role="tab" data-toggle="tab">Resources</a></li>
+        <li role="presentation"><a href="#videos" aria-controls="videos" role="tab" data-toggle="tab">Videos</a></li>
+        <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="members">
+          <h4>Group Members</h4>
+          <ul>
+            <% @group.users.each do |user| %>
+              <li><%= user.gmail_name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="resources">
+          <h4>Resources</h4>
+            <table class="table table-striped resources-container">
+              <% @group.resources.each do |resource| %>
+                <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
+              <% end %>
+            </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="videos">
+          <h4>Videos</h4>
+          <ul id='video-list'>
+            <% @group.videos.each do |video| %>
+              <%= render 'videos/video', {video: video} %>
+            <% end %>
+          </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="documents">
+          <h4>Our Docs</h4>
+         <table class='table' id='google_doc_table'>
+          <thead>
+            <tr>
+              <th>Document Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @group.google_docs.each do |google_doc| %>
+              <%= render partial: 'google_docs/table_row', locals: {google_doc: google_doc} %>
+            <% end %>
+          </tbody>
+        </table>
+            </div>
+        </div>
+    </div><!-- end panel -->
+  </div>
+  <div class="col-md-3">
+    <h4>Invite a User to this Group</h4>
+      <%= form_for @notification do |f| %>
+        <%= f.collection_select :user_id, @invite_list, :id, :gmail_name, {:prompt => "Select a user",}, {class: "form-control"} %>
+        <%= f.hidden_field :group_id, value: @group.id %>
+        <%= f.hidden_field :sender_name, value: current_user.gmail_name %>
+        <br>
+        <%= f.submit "Invite", class: "btn btn-primary"%>
+      <% end %>
+      <p></p><br>
 
-<h4>Results</h4>
-<div id="article-results">
-  <!-- list of articles formatted w/ save option, which adds resource to group and user-->
+    <h4>Add New Resources</h4>
+    <ul class="list-group" id="display-box-options">
+      <li class="list-group-item">
+        <%= link_to 'New Resource', '#new_resource_modal', 'data-toggle' => 'modal' %>
+      </li>
+      <li class="list-group-item">
+        <%= link_to 'New Video', '#new_video_modal', 'data-toggle' => 'modal' %>
+      </li>
+      <li class="list-group-item">
+        <%= link_to 'New Google Doc', '#new_google_doc_modal', 'data-toggle' => 'modal' %>
+      </li>
+    </ul>
+  </div>  
 </div>
 
-<h4>Resources</h4>
-<table class="table table-striped resources-container">
-  <% @group.resources.each do |resource| %>
-    <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
-  <% end %>
-</table>
-
-<h4>Videos</h4>
-<ul>
-  <% @group.videos.each do |video| %>
-  <li><%= link_to "#{video.title}", "#{video.link}" %></li>
-  <% end %>
-</ul>
-
-<h4>Group Members</h4>
-<ul>
-  <% @group.users.each do |user| %>
-    <li><%= user.gmail_name %></li>
-  <% end %>
-</ul>
-
-<h3>Add New Resource</h3>
-
-<%= render 'resources/form', group_id: @group.id %>
-
-<h3>Add a Google Doc</h3>
-<%= form_for (@google_doc || GoogleDoc.new), html: {class: "form-inline"} do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-    <%= f.select :doc_type, options_for_select(["Document", "Spreadsheet"])%>
-    <%= f.hidden_field :group_id, value: @group.id %>
-    <%= f.submit class: "btn btn-primary" %>
+<div class="modal fade" id="new_google_doc_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Create new Google Doc</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'google_docs/form', group_id: @group.id, modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
 
-<h3>Our Docs</h3>
-<% @group.google_docs.each do |doc| %>
-  <li> <%= link_to doc.title, doc.url %></li>
-<% end %>
+<div class="modal fade" id="new_video_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Link to YouTube Video</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'videos/form', group_id: @group.id, modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h3>Add a YouTube Video</h3>
+<div class="modal fade" id="new_resource_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Link to New Resource</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'resources/form', group_id: @group.id, modal: true %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'videos/form', group_id: @group.id %>
 
+</div>
 <p></p>
 
-<h3>Invite a User to this Group</h3>
-<%= form_for @notification do |f| %>
-  <%= f.collection_select :user_id, @invite_list, :id, :gmail_name %>
-  <%= f.hidden_field :group_id, value: @group.id %>
-  <%= f.hidden_field :sender_name, value: current_user.gmail_name %>
-  <%= f.submit "Invite" %>
-<% end %>
