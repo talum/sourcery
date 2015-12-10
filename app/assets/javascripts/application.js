@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require journal
 //= require turbolinks
+//= require jquery-readyselector
 //= require comments/newComment
 //= require comments/deleteComment
 //= require homeShow

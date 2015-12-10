@@ -1,4 +1,4 @@
-$(function(){
+$(".teachers.show").ready(function(){
   $.ajax({
     url: window.location.pathname,
     type: "get",

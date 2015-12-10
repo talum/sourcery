@@ -1,4 +1,4 @@
-$(document).on("page:change", function(){
+$(".groups.show").ready(function(){
   submitGoogleDocFormListener();
   addNewGoogleDocSuccessListener();
   submitVideoFormListener();
