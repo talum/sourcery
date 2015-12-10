@@ -37,6 +37,16 @@ class Student < ActiveRecord::Base
     end
   end
 
+  def self.comments_by_student_for_a_teacher(teacher)
+    student_ids = teacher.groups.each_with_object([]) do |group, my_groups_student_ids|
+      my_groups_student_ids.push(group.user_ids)
+    end.flatten.uniq.delete(teacher.id)
+
+    self.where(user_id: student_ids).each_with_object([]) do |student, array_object|
+      array_object << {name: student.gmail_name, comment_count: student.comments.length}
+    end
+  end
+
   #return the student object who has commented the most
   def self.with_most_comments
     if self.array_of_num_comments_by_student.length > 0 && self.array_of_num_comments_by_student.length > 0
@@ -76,6 +86,17 @@ class Student < ActiveRecord::Base
     self.array_of_num_of_resources_by_student.each_with_object([]) do |student_array, array_object|
       array_object << {student: Student.find(student_array.first).user.gmail_name, resource_count: student_array.last}
     end
+  end
+
+  def self.resources_by_student_for_a_teacher(teacher)
+    student_ids = teacher.groups.each_with_object([]) do |group, my_groups_student_ids|
+      my_groups_student_ids.push(group.user_ids)
+    end.flatten.uniq.delete(teacher.id)
+
+    array = self.where(user_id: student_ids).each_with_object([]) do |student, array_object|
+      array_object << {name: student.gmail_name, resource_count: student.resources.length}
+    end
+    array
   end
 
   #Returns the student object who has made the most resources
