@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
     @invite_ids = @group.invite_ids(current_user)
     @comments_over_time = @group.comments_over_time
     @invite_list = User.where(id: @invite_ids)
+    @user_group = UserGroup.find_by(group_id: @group.id, user_id: current_user.id)
     respond_to do |format| 
       format.html
       format.json {render json: {comments_over_time: @comments_over_time}}

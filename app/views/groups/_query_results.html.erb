@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to article.title, article.link, :target => "_blank" %></td>
-  <td><%= form_for Resource.new, url: save_path, method: :post, remote: true, html:{class: "save-resource-btn"} do |f| %>
+  <td><%= form_for Resource.new, remote: true, html:{class: "save-resource-btn"} do |f| %>
     <%= f.hidden_field :title, value: article.title %>
     <%= f.hidden_field :link, value: article.link %>
     <%= f.hidden_field :group_id, value: group_id %>
