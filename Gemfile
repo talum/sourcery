@@ -41,7 +41,7 @@ gem 'google_drive'
 gem 'httparty'
 gem 'recursive-open-struct'
 
-gem 'yt', '~> 0.13.7'
+gem 'yt', '~> 0.25.5'
 gem 'rails-observers'
 
 gem 'twitter-bootswatch-rails', '~> 3.3.4'
