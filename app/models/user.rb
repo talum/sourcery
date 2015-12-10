@@ -87,4 +87,8 @@ class User < ActiveRecord::Base
     self.friend_ids.push(self.id)
   end
 
+  def engagement_score
+    groups.count > 0 ? ((resources.count / groups.count.to_f) + (favorites.count / groups.count.to_f) + (comments.count / groups.count.to_f)).round(2) : 0 
+  end
+
 end
