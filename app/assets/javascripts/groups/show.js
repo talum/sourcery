@@ -122,3 +122,10 @@ function buildCommentsOverTimeGraph(commentsOverTime){
         .attr("class", "line")
         .attr("d", line);
 }
+
+$( document ).ajaxStart(function() {
+  $("#loading-message").show();
+});
+$( document ).ajaxComplete(function() {
+  $("#loading-message").hide();
+});
