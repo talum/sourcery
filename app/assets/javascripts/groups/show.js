@@ -1,9 +1,7 @@
 $(document).on("page:change", function(){
   submitGoogleDocFormListener();
   addNewGoogleDocSuccessListener();
-  submitVideoFormListener();
   addNewVideoSuccessListener();
-  submitResourceFormListener();
   addNewResourceListener();
   commentsOverTimeListener();
 });
@@ -20,28 +18,37 @@ function addNewGoogleDocSuccessListener(){
   });
 }
 
-function submitVideoFormListener(){
-  $('#new_video_body > input.btn.btn-primary').on('click', function() {
-    $('#new_video_modal').modal('hide')
-  });  
-}
+// function submitVideoFormListener(){
+//   $('#new_video_body > input.btn.btn-primary').on('click', function() {
+//     $('#new_video_modal').modal('hide')
+//   });  
+// }
 
 function addNewVideoSuccessListener(){
   $('#new_video_form').on('ajax:success', function(event, data) {
+    $('#new_video_modal').modal('hide')
     $('#video-list').append(data.video_item);
-  });  
+  }); 
+
+  $('#new_video_form').on('ajax:error', function(event, data) {
+    for (i = 0; i < data.responseJSON.errors.length; i++) {
+      $('#video_errors').addClass('alert alert-danger').append(data.responseJSON.errors[i]);
+    }
+  }) 
 }
 
-function submitResourceFormListener(){
-  $('#new_resource_body > input.btn.btn-primary').on('click', function() {
-    $('#new_resource_modal').modal('hide');
-  });  
-}
 
 function addNewResourceListener(){
   $('#new_resource_form').on('ajax:success', function(event, data) {
+    $('#new_resource_modal').modal('hide');
     $('.resources-container').append(data.resource_item);
-  });  
+  }); 
+
+  $('#new_resource_form').on('ajax:error', function(event, data){
+    for (i = 0; i < data.responseJSON.errors.length; i++) {
+      $('#resource_errors').addClass('alert alert-danger').append(data.responseJSON.errors[i]);
+    }
+  }) 
 }
 
 function commentsOverTimeListener(){

@@ -22,11 +22,12 @@ class ResourcesController < ApplicationController
   def create
     @resource = Resource.new(resource_params)
     @group = Group.find(resource_params[:group_id])
-    @resource.save!
-    resource_item = render_to_string(partial: 'resources/resource', locals: {resource: @resource, current_user: current_user})
-    render json: {message: "Resource saved!", resource_item: resource_item}
-    rescue ActiveRecord::RecordInvalid
-      redirect_to @group, :flash => { :error => @resource.errors.full_messages}
+    if @resource.save
+      resource_item = render_to_string(partial: 'resources/resource', locals: {resource: @resource, current_user: current_user})
+      render json: {message: "Resource saved!", resource_item: resource_item}
+    else 
+      render json: {errors: @resource.errors.full_messages}, status: 422
+    end 
   end
 
   def edit

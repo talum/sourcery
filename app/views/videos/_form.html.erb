@@ -1,7 +1,8 @@
 <% modal ||= false %>
 <% remote = modal ? true : false %>
 <%= form_for @video, remote: remote, html: {class: "form-inline", role: :form, 'data-model' => 'youtube_video', id: 'new_video_form'} do |f| %>
-  <%= render 'shared/youtube_errors', object: @video %>
+  <div id="video_errors">
+  </div>
 
   <div class="form-group" id="new_video_body">
     <%= f.label :link %>
