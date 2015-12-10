@@ -23,7 +23,7 @@ class Teacher < ActiveRecord::Base
 
   def student_comments
     self.students.each_with_object([]) do |student, array|
-      array << {student: student.gmail_name, comment_count: student.comments.length, object: student}
+      array << {name: student.gmail_name, comment_count: student.comments.length, object: student}
     end.sort_by { |hash| hash[:comment_count]}.reverse
   end
 
@@ -38,7 +38,7 @@ class Teacher < ActiveRecord::Base
 
   def student_resources
     self.students.each_with_object([]) do |student, array|
-      array << {name: student.gmail_name, resource_count: student.resources.length, object: student}
+      array << {student: student.gmail_name, resource_count: student.resources.length, object: student}
     end.sort_by {|hash| hash[:resource_count]}.reverse
   end
 

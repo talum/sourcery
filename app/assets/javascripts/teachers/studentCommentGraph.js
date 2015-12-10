@@ -10,7 +10,8 @@ $(function(){
   })
 });
 
-  function buildCommentChart (arrayOfStudentHashes){    
+  function buildCommentChart (arrayOfStudentHashes){ 
+
     var barWidth = 35;
     var margin = {top: 50, right: 30, bottom: 200, left: 60} 
     var chartHeight = 600 - margin.top - margin.bottom 
