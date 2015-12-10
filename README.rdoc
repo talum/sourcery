@@ -1,28 +1,35 @@
-== README
+== Sourcery README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sourcery is a Rails app that makes collaborating on research projects easier for students and teachers. Sign in with a Gmail account, then get sharing! 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+With Sourcery, users can share articles, documents, and videos, as well as join research groups and follow other users. Not sure where to start on a project? Query the New York Times for article suggestions that you can then save to your resources and share with your group. When you're ready to start compiling and synthesizing your ideas, export your comments to PDF or create a Google Doc that gets added to your Google Drive right from our application. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+##Features 
+
+* Save a resource to a group and view it in an iframe 
+
+* Start a conversation about a particular resource by leveraging our comment system
+
+* Add YouTube videos to your group 
+
+* Export a PDF containing all the comments related to a resource
+
+* Create a Google Doc for your group to start collaborating immediately
+
+* Query the New York Times API for relevant article suggestions 
+
+* Follow friends and view an activity feed for people in your groups 
+
+* Favorite resources you'd like to return to 
+
+* Login with Gmail (Omniauth)
+
+* As a teacher, view student analytics reports and graphs  
+
+
+##Contributors 
+Meredith Edwards, Madeline Ford, Tracy Lum, and Jim Rectenwald 
+
+Flatiron School Web-0915 Cohort 
+
