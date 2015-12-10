@@ -11,9 +11,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @resource = @comment.resource
     @comment.destroy
-    render "/resources/show"
+    render json: {comment: "Deleted"}
   end
 
 private 

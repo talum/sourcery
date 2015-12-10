@@ -1,3 +1,3 @@
-<%= link_to favorite_path(:resource => resource), method: :post, class: "btn btn-primary btn-xs" do %>
+<%= link_to favorites_path(group_id: resource.group.id, resource_id: resource.id), method: :post, remote: true, class: "btn btn-primary btn-xs favorite" do %>
   <i class="fa fa-magic"></i> Favorite
 <% end %>
