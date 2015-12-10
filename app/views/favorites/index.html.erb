@@ -5,7 +5,7 @@
   <% group_favorites[1].each do |favorite| %>
    <tr>
     <td class="col-md-4">Title: <%= link_to favorite.resource.title, favorite.resource %></td> 
-    <td class="col-md-2"><%= render partial: "/resources/#{FavoriteToggle.new(favorite.resource, current_user).already_favorited?}", locals: {resource: favorite.resource} %></td>
+    <td class="col-md-2 favorites-index"><%= render partial: "/resources/unfavorite_resource", locals: {resource: favorite.resource} %></td>
     </tr>
   <% end %>
   </table> 

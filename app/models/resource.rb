@@ -46,9 +46,9 @@ class Resource < ActiveRecord::Base
 
   def likes_message(user)
     if !user_liked?(user)
-      "<strong>#{self.favorites.count} people</strong> like this resource".html_safe
+      "<strong>#{self.favorites.count} people</strong> have favorited this resource".html_safe
     else
-      "<strong>You</strong> and <strong>#{self.favorites.count - 1} other people</strong> like this resource".html_safe
+      "<strong>You</strong> and <strong>#{self.favorites.count - 1} other people</strong> have favorited this resource".html_safe
     end
   end
 
