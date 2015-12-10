@@ -56,7 +56,6 @@ function commentsOverTimeListener(){
 }
 
 function buildCommentsOverTimeGraph(commentsOverTime){
-
   var margin = {top: 20, right: 40, bottom: 30, left: 50},
       width = 575 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;

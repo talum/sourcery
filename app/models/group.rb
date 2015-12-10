@@ -30,10 +30,10 @@ class Group < ActiveRecord::Base
   end
 
   def comments_over_time
-    # comments.group_by{|comment| comment.created_at.to_date}.map{|k,v| {k => v.length}}
-    comments_over_time = comments.group_by{|comment| comment.created_at.to_date.to_s }.map{|k,v| {k => v.length}}
-    array = comments_over_time.map {|date_hash| [date_hash.keys[0], date_hash.values[0]]}
-    array = array.push([self.created_at.to_date.to_s, 0])
+    comments_over_time_hash = comments.group_by{|comment| comment.created_at.to_date.to_s }
+    comments_over_time_array = comments_over_time_hash.map{|k,v| [k, v.length]}
+    comments_over_time_array.push([self.created_at.to_date.to_s, 0])
+    return comments_over_time_array
   end
 
   def add_member(user)

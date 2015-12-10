@@ -10,5 +10,4 @@ class TeachersController < ApplicationController
       format.json {render json: {studentCommentData: @student_comments, studentResourceData: @student_resources}}
     end
   end 
-
-end 
+end
