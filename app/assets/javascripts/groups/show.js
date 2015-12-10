@@ -1,11 +1,13 @@
-$(".groups.show").ready(function(){
-  submitGoogleDocFormListener();
-  addNewGoogleDocSuccessListener();
-  submitVideoFormListener();
-  addNewVideoSuccessListener();
-  submitResourceFormListener();
-  addNewResourceListener();
-  commentsOverTimeListener();
+$(document).on("page:change", function(){
+  if($(".groups.show").length > 0) {
+    submitGoogleDocFormListener();
+    addNewGoogleDocSuccessListener();
+    submitVideoFormListener();
+    addNewVideoSuccessListener();
+    submitResourceFormListener();
+    addNewResourceListener();
+    commentsOverTimeListener();
+  }
 });
 
 function submitGoogleDocFormListener(){
