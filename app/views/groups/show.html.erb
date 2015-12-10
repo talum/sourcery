@@ -8,7 +8,7 @@
 
 <h3>Group Topic: <%= @group.topic %></h3>
 <p>Description: <%= @group.description %></p>
-<p><%= render partial: JoinGroupOptions.new(@group, current_user).member?, locals: {group: @group} %></p>
+<p><%= render partial: JoinGroupOptions.new(@group, current_user).member?, locals: {group: @group, user_group: @user_group} %></p>
 
 <div class="row">
   <div class="col-md-3">
