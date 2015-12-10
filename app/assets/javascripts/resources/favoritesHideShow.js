@@ -5,14 +5,14 @@ $(document).on("page:change", function(){
 
 function favoriteListener(){
   $(".resources-container").on("ajax:success", ".favorite", function(event, data){
+    $($(this).parent().parent().children()[2]).html(data.favorites_message);
     $(this).parent().html(data.unfavorite_button);
-    unfavoriteListener();
   });
 }
 
 function unfavoriteListener(){
   $(".resources-container").on("ajax:success", ".unfavorite", function(event, data){
+    $($(this).parent().parent().children()[2]).html(data.favorites_message);
     $(this).parent().html(data.favorite_button);
-    favoriteListener();
   });
 }
