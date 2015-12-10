@@ -6,7 +6,6 @@ $(document).on("page:change", function(){
   addNewGoogleDocSuccessListener();
   addNewVideoSuccessListener();
   addNewResourceListener();
-  commentsOverTimeListener();
 });
 
 function addNewGoogleDocSuccessListener(){
