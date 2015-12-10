@@ -1,8 +1,8 @@
  <h4> Top Commenter: <h4>
 <% if @student_comments.length > 0 %>
-  <strong> Name: </strong> <%= @top_commenter[:student].user.gmail_name %><br>
+  <strong> Name: </strong> <%= @top_commenter[:student].gmail_name %><br>
   <strong> Number of Comments: </strong> <%= @top_commenter[:num_comments] %><br>
-  <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].average_comment_length %><br>
+  <strong> Average Comment Word Count: </strong> <%= @top_commenter[:student].student.average_comment_length %><br>
 
 <br>
 
