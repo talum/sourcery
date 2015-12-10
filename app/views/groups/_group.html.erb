@@ -1,5 +1,5 @@
 <tr>
   <td class="col-md-4"><%= link_to group.topic, group_path(group) %></td>
   <td class="col-md-2"><%= group.description %></td>
-  <td class="col-md-4"><%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group, user_group: UserGroup.find_by(group_id: group.id, user_id: current_user.id)} %></td>
+  <td class="col-md-4"><%= render partial: JoinGroupOptions.new(group, current_user).member?, locals: {group: group, user_group: group.user_groups.where(user_id: current_user.id).first} %></td>
 </tr>
