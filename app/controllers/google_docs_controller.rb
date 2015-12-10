@@ -14,9 +14,13 @@ class GoogleDocsController < ApplicationController
     folder.add(remote_doc)
     @google_doc = GoogleDoc.create(doc_params)
     @google_doc.url = remote_doc.human_url
-    @google_doc.save
-    google_doc_item = render_to_string(partial: 'google_docs/table_row', locals: {google_doc: @google_doc})
-    render json: {message: "Google Doc saved!", google_doc_item: google_doc_item}
+
+    if @google_doc.save
+      google_doc_item = render_to_string(partial: 'google_docs/table_row', locals: {google_doc: @google_doc})
+      render json: {message: "Google Doc saved!", google_doc_item: google_doc_item}
+    else 
+      render json: {errors: @google_doc.errors.full_messages}, status: 422
+    end 
   end
 
   private
