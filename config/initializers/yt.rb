@@ -1,3 +1,3 @@
 Yt.configure do |config|
-  config.api_key = 'AIzaSyAlN7ZyTmudEoSLx0sRi2U1ZmfeXsk9qjM'
+  config.api_key = 'AIzaSyDRZckZJi24aMyhnqewh4EyIpmSbeVnxb8'
 end
