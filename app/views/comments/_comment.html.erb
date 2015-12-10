@@ -1,4 +1,5 @@
-<li id=<%=comment.id%>><%= comment.user.gmail_name %>: <%= comment.content %> | 
+<li id="<%=comment.id%>"><%= comment.user.gmail_name %>: <%= comment.content %> | 
     <% if comment.user == current_user %>
-      <%= render partial: "/resources/delete_comment", locals: {comment: comment} %> </li>
+     <%= link_to("X", comment_path(comment), method: :delete, remote: true, class: "destroy-comment-js") %>
     <% end %>
+</li>

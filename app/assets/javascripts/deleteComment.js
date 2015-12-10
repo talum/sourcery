@@ -1,5 +1,6 @@
-$(function(){
- $('.destroy-comment-js').on('ajax:success', function(event, data, status, xhr){
-   $('li#<%=@comment.id%>').remove();
- })
+$(document).on("page:change", function(){
+  $(".comment-container").on("ajax:success", ".destroy-comment-js", function(){
+   $(this).parent().remove()
+  });
 })
+

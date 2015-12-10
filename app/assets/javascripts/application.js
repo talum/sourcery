@@ -16,6 +16,7 @@
 //= require journal
 //= require turbolinks
 //= require newComment
+//= require deleteComment
 //= require homeShow
 //= require groups/show
 //= require teachers/studentCommentGraph
