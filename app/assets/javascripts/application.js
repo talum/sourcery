@@ -21,5 +21,6 @@
 //= require teachers/studentCommentGraph
 //= require teachers/studentResourceGraph
 //= require resources/toggle_show_hide_resource
+//= require resources/favoritesHideShow
 //= require nyt_articlesearch
 

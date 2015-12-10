@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   post 'choice', to: 'sessions#choice', as: 'choice'
-  post 'favorite', to: 'resources#favorite', as: 'favorite'
-  post 'unfavorite', to: 'resources#unfavorite', as: 'unfavorite'
   get 'query', to: "queries#create", as: 'query'
 
   resources :sessions, only: [:create, :destroy]
@@ -15,7 +13,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :comments, only: [:create, :destroy]
   resources :google_docs, only: [:create, :destroy]
-  resources :favorites, only: [:index]
+  resources :favorites, only: [:index, :create, :destroy]
   resources :teachers, only: [:show]
   resources :videos, only: [:index, :new, :create]
   resources :notifications, only: [:create, :index, :destroy]

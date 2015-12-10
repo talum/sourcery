@@ -46,20 +46,6 @@ class ResourcesController < ApplicationController
     redirect_to :back
   end
 
-  def favorite
-    @resource = Resource.find(params[:resource])
-    @favorite = Favorite.find_or_create_by(user_id: current_user.id, resource_id: params[:resource])
-    @resource.create_activity :favorite
-    redirect_to :back
-  end
-
-  def unfavorite
-    # @resource = Resource.find(params[:resource])
-    @favorite = Favorite.find_by(user_id: current_user.id, resource_id: params[:resource])
-    @favorite.destroy
-    redirect_to :back
-  end
-
 
 private
   def resource_params
