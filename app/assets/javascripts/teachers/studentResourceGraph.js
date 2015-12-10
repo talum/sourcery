@@ -1,13 +1,14 @@
-$(".teachers.show").ready(function(){
-  $.ajax({
-    url: window.location.pathname,
-    type: "get",
-    dataType: "json",
-    success: function(data, textStatus, xhr){
-      buildResourceChart(data.studentResourceData);
-    }
-
-  })
+$(document).on("page:change", function(){
+  if($(".teachers.show").length > 0) {
+    $.ajax({
+      url: window.location.pathname,
+      type: "get",
+      dataType: "json",
+      success: function(data, textStatus, xhr){
+        buildResourceChart(data.studentResourceData);
+      }
+    })
+  }
 });
 
 function buildResourceChart (arrayOfStudentHashes){    

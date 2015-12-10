@@ -1,11 +1,10 @@
-$(".groups.show").ready(function(){
-  commentsOverTimeListener();
-});
-
 $(document).on("page:change", function(){
-  addNewGoogleDocSuccessListener();
-  addNewVideoSuccessListener();
-  addNewResourceListener();
+  if($(".groups.show").length > 0) {
+    addNewGoogleDocSuccessListener();
+    addNewVideoSuccessListener();
+    addNewResourceListener();
+    commentsOverTimeListener();
+  }
 });
 
 function addNewGoogleDocSuccessListener(){

@@ -1,13 +1,15 @@
-$(function(){
-  $.ajax({
-    url: window.location.pathname,
-    type: "get",
-    dataType: "json",
-    success: function(data, textStatus, xhr){
-      buildCommentChart(data.studentCommentData);
-    }
 
-  })
+$(document).on("page:change", function(){
+  if($(".teachers.show").length > 0) {
+    $.ajax({
+      url: window.location.pathname,
+      type: "get",
+      dataType: "json",
+      success: function(data, textStatus, xhr){
+        buildCommentChart(data.studentCommentData);
+      }
+    })
+  }
 });
 
   function buildCommentChart (arrayOfStudentHashes){ 
