@@ -23,8 +23,8 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     @group = Group.find(resource_params[:group_id])
     @resource.save!
-    resource_item = render_to_string(partial: 'resources/resource', locals: {resource: @resource})
-    render json: {resource_item: resource_item}
+    resource_item = render_to_string(partial: 'resources/resource', locals: {resource: @resource, current_user: current_user})
+    render json: {message: "Resource saved!", resource_item: resource_item}
     rescue ActiveRecord::RecordInvalid
       redirect_to @group, :flash => { :error => @resource.errors.full_messages}
   end
@@ -60,12 +60,6 @@ class ResourcesController < ApplicationController
     redirect_to :back
   end
 
-  def save
-    @resource = Resource.new(resource_params)
-    @resource.save
-    resource_item = render_to_string(partial: "resources/resource", locals: {resource: @resource, current_user: current_user})
-    render json: {message: "Resource saved!", resource_item: resource_item}
-  end
 
 private
   def resource_params
