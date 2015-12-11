@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     render 'groups'
   end
 
+  def omniauth_failure
+    redirect_to root_url
+  end
+
   # def join_group
   #   @group = Group.find(join_params)
   #   @group.add_member(current_user)
