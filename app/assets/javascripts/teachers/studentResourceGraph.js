@@ -13,7 +13,7 @@ $(document).on("page:change", function(){
 
 function buildResourceChart (arrayOfStudentHashes){    
   var barWidth = 35;
-  var margin = {top: 50, right: 30, bottom: 200, left: 60} 
+  var margin = {top: 50, right: 30, bottom: 200, left: 100} 
   var chartHeight = 600 - margin.top - margin.bottom 
   var chartWidth = 600 - margin.left - margin.right
   var chartScale = d3.scale.linear()
