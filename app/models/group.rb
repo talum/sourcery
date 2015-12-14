@@ -53,8 +53,9 @@ class Group < ActiveRecord::Base
   end 
 
   def invite_ids(current_user)
-    nonmembers = UserGroup.where.not(group_id: self.id).pluck(:user_id)
-    nonmembers.select{|id| current_user.friend_ids.include?(id)}
+    # nonmembers = UserGroup.where.not(group_id: self.id).pluck(:user_id)
+    # nonmembers.select{|id| current_user.friend_ids.include?(id)}
+    User.all.select{|user| !self.users.include?(user) && current_user.friend_ids.include?(user)}
   end
 
 
