@@ -9,8 +9,8 @@ end
 
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  @keys = YAML.load_file('./config/application.yml')
-  provider :google_oauth2, @keys['GMAIL_ID'], @keys['GMAIL_SECRET'], {
+  # @keys = YAML.load_file('./config/application.yml')
+  provider :google_oauth2, ENV['GMAIL_ID'], ENV['GMAIL_SECRET'], {
     scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/drive https://spreadsheets.google.com/feeds/',
     client_options: {
       ssl: {
