@@ -55,11 +55,11 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="videos">
           <h4>Videos</h4>
-          <ul id='video-list'>
+          <table class="table table-striped videos-container">
             <% @group.videos.each do |video| %>
-              <%= render 'videos/video', {video: video} %>
+              <%= render 'videos/video', {video: video, current_user: current_user} %>
             <% end %>
-          </ul>
+          </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="documents">
           <h4>Our Docs</h4>

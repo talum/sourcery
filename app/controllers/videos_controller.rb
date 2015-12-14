@@ -14,6 +14,12 @@ class VideosController < ApplicationController
     end 
   end
 
+  def destroy
+    @video = Video.find(params[:id])
+    @video.destroy
+    render json: {message: "destroyed"}
+  end 
+
   private
 
   def video_params

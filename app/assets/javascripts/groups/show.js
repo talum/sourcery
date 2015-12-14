@@ -23,7 +23,7 @@ function addNewGoogleDocSuccessListener(){
 function addNewVideoSuccessListener(){
   $('#new_video_form').on('ajax:success', function(event, data) {
     $('#new_video_modal').modal('hide')
-    $('#video-list').append(data.video_item);
+    $('.videos-container').append(data.video_item);
   }); 
 
   $('#new_video_form').on('ajax:error', function(event, data) {
