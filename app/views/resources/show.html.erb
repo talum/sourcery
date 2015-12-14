@@ -8,16 +8,20 @@
   <p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
   <br>
 
-  <button href="#" id="show_hide">Show/Hide Resource Pane </button>
 </div>
 
 <div class="row">
   <div class="col-md-8">
+    <% if @resource.link[0..4] == "https" %>
+    <button href="#" id="show_hide">Show/Hide Resource Pane </button>
     <div id="externalSiteContent" width="600">
-      <iframe src="<%= @resource.link %>" width="600" height="400" style="border:medium double rgb(0, 0, 0)" alt="Due to legal restrictions, we cannot display this resource here. Please use the link above to open it in a new tab.">
+      <iframe src="<%= @resource.link %>" width="600" height="400" style="border:medium double rgb(0, 0, 0)">
       </iframe>
     </div>
+    <% else %>
+      <p>Due to legal restrictions, we cannot display this resource here. Please use the link above to open it in a new tab.</p>
   </div>
+<% end %>
 
   <div class="col-md-4">
 
