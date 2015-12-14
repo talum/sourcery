@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :login_required
+  before_filter :allow_iframe_requests
   
   def index
     @resources_by_group = current_user.resources_by_group
@@ -53,5 +54,8 @@ private
     params.require(:resource).permit(:title, :link, :group_id, :user_id)
   end
 
+  def allow_iframe_requests
+   response.headers.delete('X-Frame-Options')
+  end
 
 end

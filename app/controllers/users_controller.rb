@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_required, except: [:omniauth_failure]
   def show
     @user = User.find(params[:id])
     load_activities

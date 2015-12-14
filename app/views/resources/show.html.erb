@@ -1,6 +1,8 @@
 <div class="row">
   <h3>Title: <%=@resource.title%></h3>
-  <%= render partial: FavoriteToggle.new(@resource, current_user).already_favorited?, locals: {resource: @resource} %><br>
+  <div class="resources-container">
+  <%= render partial: FavoriteToggle.new(@resource, current_user).already_favorited?, locals: {resource: @resource} %>
+  </div><br>
   <%= link_to "Click to Edit", edit_resource_path(@resource), class: "btn btn-info" %>
   <p>Link: <a href="<%= @resource.link %>" target="_blank"><%= @resource.link %> </a></p>
   <p>Group: <%= link_to @resource.group.topic, @resource.group %></p>
@@ -24,19 +26,21 @@
           <%= render 'comments/comment', {comment: comment} %>
       <% end %>
     </ul>
-
-    <%= form_for @comment, remote: true, html: {id: "new-comment-js"} do |f| %>
-    <div class="form-group">
-      <%= f.text_area :content, class: "form-control" %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :resource_id, value: @resource.id %>
+   
+   <% if current_user.groups.include?(@resource.group) %>
+      <%= form_for @comment, remote: true, html: {id: "new-comment-js"} do |f| %>
+      <div class="form-group">
+        <%= f.text_area :content, class: "form-control" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :resource_id, value: @resource.id %>
+      </div>
+        <%= f.submit "Add Comment", class: "btn btn-default"%>
+      <% end %>
+      <br>
+      <%= link_to "Send Comments to PDF", resource_path(@resource, format: :pdf), class: "btn btn-info" %>
+      <br>
     </div>
-      <%= f.submit "Add Comment", class: "btn btn-default"%>
-    <% end %>
-    <br>
-    <%= link_to "Send Comments to PDF", resource_path(@resource, format: :pdf), class: "btn btn-info" %>
-    <br>
-  </div>
+  <% end %>
 
     
 </div>

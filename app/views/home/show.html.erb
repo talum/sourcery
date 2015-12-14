@@ -1,3 +1,10 @@
+<% if flash[:notice] %>
+  <div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">X</button>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="col-md-6 nopadding">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

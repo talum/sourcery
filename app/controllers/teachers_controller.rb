@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  before_action :login_required
 
   def show
     @top_commenter = Teacher.find_by(user_id: current_user.id).top_student_commenter
