@@ -32,7 +32,7 @@ class Group < ActiveRecord::Base
   def comments_over_time
     comments_over_time_hash = comments.group_by{|comment| comment.created_at.to_date.to_s }
     comments_over_time_array = comments_over_time_hash.map{|k,v| [k, v.length]}
-    comments_over_time_array.push([self.created_at.to_date.to_s, 0])
+    comments_over_time_array.unshift([(self.created_at - 1.day).to_date.to_s, 0])
     return comments_over_time_array
   end
 
