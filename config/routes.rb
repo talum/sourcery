@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :google_docs, only: [:create, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
   resources :teachers, only: [:show]
-  resources :videos, only: [:index, :new, :create]
+  resources :videos
   resources :notifications, only: [:create, :index, :destroy]
   resources :friendships, only: [:create, :destroy]
   resources :user_groups, only: [:create, :destroy]

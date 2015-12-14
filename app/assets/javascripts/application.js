@@ -14,4 +14,5 @@
 //= require resources/favoritesHideShow
 //= require resources/resourceSaveDestroy
 //= require nyt_articlesearch
+//= require videos/destroyVideo
 

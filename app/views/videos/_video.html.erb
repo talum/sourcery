@@ -1,1 +1,10 @@
-<li><%= link_to "#{video.title}", "#{video.link}" %></li>
+<tr>
+  <td class="col-md-9">
+    <%= link_to "#{video.title}", "#{video.link}" %>
+  </td>
+  <td class="col-md-3">
+    <% if video.user_id == current_user.id %>
+         <%= link_to("X", video_path(video), method: :delete, remote: true, class: "destroy-video-js") %>
+    <% end %>
+  </td>
+</tr>
