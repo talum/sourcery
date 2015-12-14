@@ -7,9 +7,9 @@ class GroupsController < ApplicationController
     @google_doc = GoogleDoc.new
     @video = Video.new
     @notification = Notification.new
-    @invite_ids = @group.invite_ids(current_user)
+    # @invite_ids = @group.invite_ids(current_user)
     @comments_over_time = @group.comments_over_time
-    @invite_list = User.where(id: @invite_ids)
+    @invite_list = @group.invite_ids(current_user)
     @user_group = UserGroup.find_by(group_id: @group.id, user_id: current_user.id)
     respond_to do |format| 
       format.html
