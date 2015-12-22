@@ -2,5 +2,7 @@
   <%= render 'public_activity/activity_header', {a: a} %>
   <% if a.trackable %>
     favorited <%= link_to a.trackable.title, resource_path(a.trackable) %>.
+  <% else %>
+    favorited a resource that has since been deleted.
   <% end %>
 </div>
