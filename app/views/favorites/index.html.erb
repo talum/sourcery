@@ -1,5 +1,7 @@
 <h3>My Favorites</h3>
+<br>
 <%= render "shared/search_form" %>
+<br>
 <% @favorites_by_group.each do |group_favorites| %>
   <h4>Group: <%= link_to group_favorites[0].topic, group_favorites[0] %> </h4>
   <table class="table table-striped filterable-table">
