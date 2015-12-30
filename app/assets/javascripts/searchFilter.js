@@ -1,9 +1,9 @@
 $(document).on("page:change", function(){
-  groupFilter();
+  resourceFilter();
 })
 
-function groupFilter(){
-  var $rows = $(".filterable-table tr.group-row");
+function resourceFilter(){
+  var $rows = $(".filterable-table tr.resource-row-js");
   
   $('.filter').keyup(function(){
     var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',

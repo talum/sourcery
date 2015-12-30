@@ -1,9 +1,10 @@
 <h3>My Favorites</h3>
+<%= render "shared/search_form" %>
 <% @favorites_by_group.each do |group_favorites| %>
   <h4>Group: <%= link_to group_favorites[0].topic, group_favorites[0] %> </h4>
-  <table class="table table-striped">
+  <table class="table table-striped filterable-table">
   <% group_favorites[1].each do |favorite| %>
-   <tr>
+   <tr class="resource-row-js">
     <td class="col-md-4">Title: <%= link_to favorite.resource.title, favorite.resource %></td> 
     <td class="col-md-2 favorites-index"><%= render partial: "/resources/unfavorite_resource", locals: {resource: favorite.resource} %></td>
     </tr>

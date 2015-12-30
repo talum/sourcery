@@ -1,9 +1,11 @@
 <h3>Users</h3>
+<%= render "shared/search_form" %>
+<br><br>
 <div class="row">
   <div class="col-md-6">
-    <table class="table table-striped">
+    <table class="table table-striped filterable-table">
       <% @users.each do |user| %>
-      <tr>
+      <tr class="resource-row-js">
         <td><%= link_to user.gmail_name, user %></td>
         <td><%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post, class: "btn btn-xs btn-info" %></td>
       </tr>

@@ -1,7 +1,9 @@
 <h3>My Resources</h3>
+<%= render "shared/search_form" %>
+<br>
 <% @resources_by_group.each do |group_resources| %>
   <h4>Group: <%= link_to group_resources[0].topic, group_resources[0] %></h4>
-  <table class="table table-striped resources-container">
+  <table class="table table-striped resources-container filterable-table">
     <% group_resources[1].each do |resource| %> 
       <%= render 'resources/resource', {resource: resource, current_user: current_user} %>
     <% end %> 

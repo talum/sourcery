@@ -2,19 +2,14 @@
 
 <%= link_to "Add New Group", new_group_path %><br><br>
 
-<div class="form-inline">
-  <div class="form-group">
-    <label for="filter">Search Groups</label>
-      <input type="text" class="filter form-control" placeholder="Type to filter">
-  </div>
-</div>
+<%= render "shared/search_form" %>
+
 <br>
 <table class="table table-striped filterable-table">
   <tr>
     <th class="col-md-4"><strong>Name</strong></th>
     <th class="col-md-4"><strong>Description</strong></th>
     <th class="col-md-4"><strong>Options</strong></th>
-    <th></th>
   </tr>
 <% @groups.each do |group| %>
   <%= render partial: 'groups/group', locals: {group: group, current_user: current_user} %>
