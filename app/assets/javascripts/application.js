@@ -8,6 +8,7 @@
 //= require comments/deleteComment
 //= require homeShow
 //= require groups/show
+//= require groups/groupSearch
 //= require teachers/studentCommentGraph
 //= require teachers/studentResourceGraph
 //= require resources/toggle_show_hide_resource

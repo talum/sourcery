@@ -2,7 +2,14 @@
 
 <%= link_to "Add New Group", new_group_path %><br><br>
 
-<table class="table table-striped">
+<div class="form-inline">
+  <div class="form-group">
+    <label for="filter">Search Groups</label>
+      <input type="text" class="filter form-control" placeholder="Type to filter">
+  </div>
+</div>
+<br>
+<table class="table table-striped filterable-table">
   <tr>
     <th class="col-md-4"><strong>Name</strong></th>
     <th class="col-md-4"><strong>Description</strong></th>
