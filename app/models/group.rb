@@ -58,6 +58,12 @@ class Group < ActiveRecord::Base
     User.all.select{|user| !self.users.include?(user) && current_user.friend_ids.include?(user.id)}
   end
 
+  def user_emails(current_user)
+    emails = self.users.pluck(:email)
+    emails.delete(current_user.email)
+    emails
+  end
+
 
 
 
