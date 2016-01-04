@@ -61,7 +61,7 @@ class Group < ActiveRecord::Base
   def user_emails(current_user)
     emails = self.users.pluck(:email)
     emails.delete(current_user.email)
-    emails
+    emails.join(",")
   end
 
 
