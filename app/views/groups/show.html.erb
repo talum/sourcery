@@ -44,7 +44,9 @@
               <li><%= user.gmail_name %></li>
             <% end %>
           </ul>
+          <% if @group.users.length > 1 %>
           <%= mail_to @group.user_emails(current_user), "Email All Members", subject: @group.topic, class: "btn btn-info btn-xs" %>
+          <% end %>
           
         </div>
         <div role="tabpanel" class="tab-pane" id="resources">
