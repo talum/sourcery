@@ -1,4 +1,4 @@
-== Sourcery README
+##Sourcery
 
 Sourcery is a Rails app that makes collaborating on research projects easier for students and teachers. Sign in with a Gmail account, then get sharing! 
 
@@ -27,9 +27,11 @@ With Sourcery, users can share articles, documents, and videos, as well as join 
 
 * As a teacher, view student analytics reports and graphs  
 
+##Bugs? Issues?
+
+Please open an issue on GitHub, and we'll get to it as soon as we can. 
 
 ##Contributors 
-Meredith Edwards, Madeline Ford, Tracy Lum, and Jim Rectenwald 
+[Meredith Edwards](https://github.com/medwards1771), [Madeline Ford](https://github.com/mford22392), [Tracy Lum](https://github.com/talum), and [Jim Rectenwald](https://github.com/jrectenwald) 
 
 Flatiron School Web-0915 Cohort 
-
