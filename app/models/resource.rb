@@ -52,7 +52,11 @@ class Resource < ActiveRecord::Base
         "<strong>#{self.favorites.count} people</strong> have favorited this resource".html_safe
       end
     else
-      "<strong>You</strong> and <strong>#{self.favorites.count - 1} other people</strong> have favorited this resource".html_safe
+      if (self.favorites.count - 1) == 1
+        "<strong>You</strong> and <strong>1 other person</strong> have favorited this resource".html_safe
+      else
+        "<strong>You</strong> and <strong>#{self.favorites.count - 1} other people</strong> have favorited this resource".html_safe
+      end
     end
   end
 
