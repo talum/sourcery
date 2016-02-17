@@ -9,6 +9,7 @@ $(document).on("page:change", function(){
 
 function addNewGoogleDocSuccessListener(){
   $('#new_google_doc').on('ajax:success', function(event, data) {
+    $(this).find("input[type=text]").val("")
     $('#new_google_doc_modal').modal('hide')
     $('#google_doc_table').append(data.google_doc_item);
   });
@@ -22,6 +23,7 @@ function addNewGoogleDocSuccessListener(){
 
 function addNewVideoSuccessListener(){
   $('#new_video_form').on('ajax:success', function(event, data) {
+    $(this).find("input[type=text]").val("")
     $('#new_video_modal').modal('hide')
     $('.videos-container').append(data.video_item);
   }); 
@@ -35,6 +37,7 @@ function addNewVideoSuccessListener(){
 
 function addNewResourceListener(){
   $('#new_resource_form').on('ajax:success', function(event, data) {
+    $(this).find("input[type=text]").val("")
     $('#new_resource_modal').modal('hide');
     $('.resources-container').append(data.resource_item);
   }); 

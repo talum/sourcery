@@ -6,6 +6,6 @@ $(document).on("page:change", function(){
 function jimPicToggleListener(){
   $("#jim-pic-js").on("dblclick", function(){
     $("#jim-bio-js img").remove();
-    $("#jim-bio-js").prepend("<img src='/assets/giphy.gif' class='img-circle' height='140' width='140'>");
+    $("#jim-bio-js").prepend("<img src='/assets/giphy.gif' class='img-circle center-block' height='140' width='140'>");
   });
 }
